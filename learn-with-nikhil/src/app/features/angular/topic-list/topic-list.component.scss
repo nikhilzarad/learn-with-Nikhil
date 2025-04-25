@@ -1,0 +1,228 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    /* Full viewport height */
+}
+
+/* Container to center content */
+.container {
+    width: 100%;
+
+    //   max-width: 600px; /* Limit the width for better readability */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: center;
+    /* Center items horizontally */
+}
+
+/* Search Input */
+input[type="text"] {
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+    width: 100%;
+    /* Full width of the container */
+    transition: all 0.3s ease;
+
+    &:focus {
+        outline: none;
+        border-color: #0056b3;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+}
+
+/* Card Styles */
+.card {
+    margin: 20px 0;
+    //   border: none;
+    padding: 1rem;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 100%;
+    /* Ensure the card takes full width of the container */
+
+
+}
+
+/* List Group */
+.list-group {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    /* Allow items to wrap on smaller screens */
+    gap: 15px;
+    /* Add spacing between items */
+
+    .list-group-item {
+        cursor: pointer;
+        border: 1px solid #ddd;
+        /* Add a light border */
+        padding: 10px 15px;
+        /* Adjust padding for compact size */
+        font-size: 1rem;
+        display: inline-block;
+        /* Ensure the item only takes up necessary space */
+        transition: all 0.3s ease;
+        border-radius: 5px;
+        /* Optional: Add rounded corners */
+        text-align: center;
+
+        &:hover {
+            background-color: #007bff;
+            color: #fff;
+            transform: scale(1.02);
+        }
+    }
+}
+
+/* Topic Section */
+h2 {
+    font-size: 1.5rem;
+    color: #007bff;
+    margin-bottom: 20px;
+}
+
+h5 {
+    font-size: 1.2rem;
+    color: #343a40;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.5;
+    letter-spacing: .5px;
+    text-align: justify;
+
+}
+
+pre {
+    background-color: #cbdff4;
+    ;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    overflow-x: auto;
+}
+
+/* Buttons */
+button {
+    transition: all 0.3s ease;
+
+    &.btn-outline-secondary {
+        border-color: #007bff;
+        color: #007bff;
+
+        &:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+    }
+
+    &.btn-success {
+        background-color: #28a745;
+        border-color: #28a745;
+
+        &:hover {
+            background-color: #218838;
+            border-color: #1e7e34;
+        }
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    input[type="text"] {
+        font-size: 0.9rem;
+        padding: 8px;
+    }
+
+    .list-group {
+        justify-content: center;
+        /* Center items on medium screens */
+    }
+
+    .list-group-item {
+        font-size: 0.9rem;
+        /* Reduce font size */
+        padding: 8px 12px;
+        /* Adjust padding */
+    }
+
+    h2 {
+        font-size: 1.3rem;
+    }
+
+    h5 {
+        font-size: 1.5rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+
+    pre {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .card-body {
+        padding: 15px;
+    }
+
+    .list-group {
+        flex-direction: column;
+        /* Stack items vertically on small screens */
+        align-items: center;
+        /* Center items */
+    }
+
+    .list-group-item {
+        width: 100%;
+        /* Make items take full width */
+        max-width: 300px;
+        /* Limit the width for better readability */
+        font-size: 0.8rem;
+        /* Further reduce font size */
+        padding: 10px;
+        /* Adjust padding */
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    h5 {
+        font-size: 1.2rem;
+    }
+
+    p {
+        font-size: 0.9rem;
+    }
+}
+
+.josefin-sans {
+    font-family: "Josefin Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    letter-spacing: 0.125em;
+}
+
+.eb-garamond {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    // font-weight: <weight>;
+    font-style: normal;
+    font-weight: 300;
+}
