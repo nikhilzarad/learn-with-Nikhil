@@ -17,11 +17,14 @@
 
         <div *ngFor="let q of topic.questions" class="mb-4">
           <h5 class="josefin-sans">{{ q.question }}</h5>
-          <p class="eb-garamond">{{ q.answer }}</p>
+          <p >
+            <span class="eb-garamond" *ngFor="let sentence of q.answer.split('$')">
+              {{ sentence.trim() }}<br>
+            </span>
+          </p>
 
-          <pre><code>{{ q.code }}</code></pre>
-          <button class="btn btn-outline-secondary btn-sm" (click)="copyCode(q.code)">Copy</button>
-          <button class="btn btn-success btn-sm ms-2" (click)="runCode(q.code)">Run</button>
+          <pre *ngIf="q.code"><code>{{ q.code }}</code></pre>
+          <button *ngIf="q.code" class="btn btn-outline-secondary btn-sm" (click)="copyCode(q.code)">Copy</button>
         </div>
       </div>
     </div>
