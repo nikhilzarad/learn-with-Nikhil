@@ -403,6 +403,322 @@ export class LoginStatusComponent {
         },
       ],
     },
+    {
+      name: 'State Management',
+      questions: [
+        {
+          question: '1. What is State Management in Angular?',
+          answer:
+            'State management is the process of managing the state of an application, including data, UI state, and application logic. $ It is used to store, retrieve, and update and share data between components and services.',
+          code: ``,
+        },
+        {
+          question: '2. Why is State Management Important?',
+          answer:
+            'State management is important for maintaining a consistent and predictable application state, especially in large applications with multiple components and services. $ It helps to avoid data inconsistencies, improve performance, and simplify debugging and testing.',
+          code: ``,
+        },
+        {
+          question: '11. what is different way to manage state in angular?',
+          answer:
+            'There are several ways to manage state in Angular applications, including: $ 1. Local component state: Each component can manage its own state using properties and methods. using @Input and @Output decorators to pass data between parent and child components. $$ 2. Services: Services can be used to share state between components and manage application-wide state. Services can use RxJS subjects or BehaviorSubjects to create observables for state changes. $$ 3. State management libraries: Libraries like NgRx, Akita, NGXS, and MobX provide more advanced state management solutions for larger applications. These libraries offer features like centralized stores, actions, reducers, and selectors to manage application state more effectively. $$ 4. Signals: Signals are a new way to manage state in Angular applications. They are reactive primitives that allow components to automatically update when the signal value changes. Signals can be used for local UI state, computed values, and more. $$ 5. NgRx Component Store: NgRx Component Store is a lightweight state management solution for managing local component state in Angular applications. It provides a simple API for creating stores and managing state without the complexity of NgRx. $  ',
+        },
+        {
+          question: '4. What is NgRx?',
+          answer:
+            'NgRx is a popular state management library for Angular applications that is based on the Redux pattern. $ It provides a centralized store for managing application state, actions for updating state, and selectors for retrieving state. $ NgRx also includes features like effects for handling side effects and devtools for debugging and monitoring state changes.',
+          code: ``,
+        },
+        {
+          question: '5. What is Redux?',
+          answer:
+            'Redux is a predictable state container for JavaScript applications that is based on the Flux architecture. $ It provides a centralized store for managing application state, actions for updating state, and reducers for processing actions and updating the store. $ Redux is often used with React but can be used with any JavaScript framework or library.',
+          code: ``,
+        },
+        {
+          question: '6. What is a Store in NgRx?',
+          answer:
+            'A store is a centralized container for managing application state in NgRx. $ It holds the current state of the application and provides methods for updating and retrieving state. $ The store is immutable, meaning that state can only be updated by dispatching actions and processing them with reducers.',
+          code: ``,
+        },
+        {
+          question: '7. What are Actions in NgRx?',
+          answer:
+            'Actions are payloads of information that send data from the application to the store in NgRx. $ They are used to describe events that occur in the application, such as user interactions or API responses. $ Actions are dispatched to the store to trigger state updates and are processed by reducers to update the state.',
+          code: ``,
+        },
+        {
+          question: '8. What are Reducers in NgRx?',
+          answer:
+            'Reducers are pure functions that take the current state and an action as input and return a new state as output in NgRx. $ They are used to process actions and update the store based on the action type and payload. $ Reducers must not mutate the current state and should always return a new state object.',
+          code: ``,
+        },
+        {
+          question: '9. What are Selectors in NgRx?',
+          answer:
+            'Selectors are pure functions that take the store state as input and return a derived state or a specific slice of the state as output in NgRx. $ They are used to retrieve data from the store and can be composed to create more complex selectors. $ Selectors help to improve performance by memoizing results and reducing unnecessary re-renders of components.',
+          code: ``,
+        },
+        {
+          question: '10. What are Effects in NgRx?',
+          answer:
+            'Effects are used to handle side effects in NgRx, such as API calls, navigation, or logging. $ They listen for specific actions dispatched to the store and perform asynchronous operations based on those actions. $ Effects can also dispatch new actions to update the store based on the result of the side effect.',
+          code: ``,
+        },
+      ],
+    },
+    {
+      name: 'Performance Optimization',
+      questions: [
+        {
+          question: '1. What is Performance Optimization in Angular?',
+          answer:
+            'Performance optimization is the process of improving the performance and efficiency of an Angular application. $ it used to reduce loading times, improve rendering speed, and enhance the overall user experience. $ Performance optimization is important for ensuring that an application runs smoothly and efficiently, especially in large applications with complex components and data.',
+          code: ``,
+        },
+        {
+          question:
+            '2. what are the different ways to optimize performance in Angular?',
+          answer:
+            'There are several ways to optimize performance in Angular applications, including: $ 1. Change detection strategy: Use OnPush change detection strategy to reduce the number of change detection cycles and improve performance. $$ 2. Lazy loading: Use lazy loading to load modules and components on demand, reducing the initial bundle size and improving loading times. $$ 3. TrackBy function: Use TrackBy function with ngFor directive to improve rendering performance by tracking changes in lists and preventing unnecessary re-renders. $$ 4. Pure pipes: Use pure pipes to optimize data transformations and prevent unnecessary recalculations. $$ 5. AOT compilation: Use Ahead-of-Time (AOT) compilation to pre-compile templates and improve loading times. $$ 6. Service workers: Use service workers to cache assets and improve offline performance. $$ 7. Web workers: Use web workers to offload heavy computations and improve performance. $  ',
+          code: ``,
+        },
+        {
+          question: '3. What is Change Detection in Angular?',
+          answer:
+            'Use OnPush change detection strategy to reduce the number of change detection cycles and improve performance. it check for changes only when the input properties change or when an event occurs. $$ Example: suppose we have a component that receives input properties from its parent component. We can use OnPush change detection strategy to optimize performance by checking for changes only when the input properties change or when an event occurs. $  ',
+          code: `import { ChangeDetectionStrategy } from '@angular/core';
+          @Component({
+            selector: 'app-my-component',
+            templateUrl: './my-component.component.html',
+            styleUrls: ['./my-component.component.css'],
+            changeDetection: ChangeDetectionStrategy.OnPush,
+          })
+        `,
+        },
+        {
+          question: '4. What is TrackBy function in Angular?',
+          answer:
+            'TrackBy function is used with ngFor directive to improve performance when rendering lists of items. it helps Angular to identify and track items in the list, reducing the number of DOM manipulations and improving rendering speed. $$ Example: suppose we have a list of products that we want to render using ngFor directive. We can use trackBy function to optimize performance by helping Angular to identify and track items in the list. $  ',
+          code: `*ngFor="let product of products; trackBy: trackByProductId"`,
+        },
+        {
+          question: '5. What is AOT compilation in Angular?',
+          answer:
+            'AOT compilation is a technique used to pre-compile templates and components at build time, rather than at runtime. it helps to reduce loading times and improve rendering speed by eliminating the need for runtime compilation. $$ Example: suppose we have a large application with multiple components and templates. We can use AOT compilation to optimize performance by pre-compiling templates and components at build time, reducing loading times and improving rendering speed. $  ',
+          code: `ng build --prod --aot`,
+        },
+        {
+          question: '6. What is RXJS operators in Angular?',
+          answer:
+            'RXJS operators are used to optimize performance when handling user input and events. it helps to reduce the number of events and improve performance by controlling the frequency of events. $$ Example: suppose we have a search input field that triggers an API call on every keystroke. We can use debounceTime operator to optimize performance by reducing the number of API calls and improving performance. $  ',
+          code: `import { debounceTime } from 'rxjs/operators';
+          this.searchInput.valueChanges.pipe(debounceTime(300)).subscribe(value => {
+            // Perform search operation
+          });`,
+        },
+        {
+          question: '7. What is Angular Universal?',
+          answer:
+            'Angular Universal is a technology that enables server-side rendering (SSR) for Angular applications. it helps to improve loading times and SEO by rendering the application on the server before sending it to the client. $$ Example: suppose we have a large application with multiple components and templates. We can use Angular Universal to optimize performance by enabling server-side rendering (SSR) for the application, improving loading times and SEO. $  ',
+          code: `ng add @nguniversal/express-engine`,
+        },
+        {
+          question: '8. What is pure pipes in Angular?',
+          answer:
+            'Pure pipes are used to optimize performance when transforming data in templates. it helps to reduce the number of change detection cycles and improve performance by caching the results of the pipe. $$ Example: suppose we have a component that transforms data using a custom pipe. We can use pure pipes to optimize performance by reducing the number of change detection cycles and improving performance. $  ',
+          code: `@Pipe({ name: 'myPipe', pure: true })`,
+        },
+        {
+          question: '9. What is Image optimization in Angular?',
+          answer:
+            'Image optimization is the process of reducing the size of images and assets to improve loading times and performance. it helps to reduce the size of images and assets, improving loading times and performance. $$ Example: suppose we have a large application with multiple images and assets. We can optimize images and assets to improve performance by reducing the size of images and assets, improving loading times and performance. $  ',
+          code: `ng build --prod --optimization`,
+        },
+        {
+          question: '10. What is Web Workers in Angular?',
+          answer:
+            'Web Workers are a browser feature that allows you to run scripts in background threads. In Angular, Web Workers are used to offload CPU-intensive tasks so the main thread (UI) remains responsive. $ Web Workers are useful for performing heavy computations, such as data processing or image manipulation, without blocking the UI thread. $$ Example: usecases of Web Workers in Angular include: $ 1. Data processing: If you have a large dataset that needs to be processed, you can use a Web Worker to perform the processing in the background while keeping the UI responsive. $ 2. Image manipulation: If you need to perform image processing tasks, such as resizing or filtering, you can use a Web Worker to offload the processing to a separate thread. $ 3. Complex calculations: If you have complex calculations that take a long time to complete, you can use a Web Worker to perform the calculations in the background without blocking the UI thread. $  ',
+          code: ``,
+        },
+        {
+          question: '11. What is Service Workers in Angular?',
+          answer:
+            'Service Workers are a script that runs in the background of your web application and acts as a proxy between your application and the network. In Angular, Service Workers are used to enable offline capabilities and improve performance by caching assets and API responses. $ Service Workers are useful for creating Progressive Web Apps (PWAs) that can work offline and provide a better user experience. $$ Example: usecases of Service Workers in Angular include: $ 1. Offline capabilities: If you want your application to work offline, you can use a Service Worker to cache assets and API responses so that they are available when the user is offline. $ 2. Background sync: If you want to synchronize data with the server when the user comes back online, you can use a Service Worker to perform background sync operations. $ 3. Push notifications: If you want to send push notifications to users, you can use a Service Worker to handle push notifications and display them to the user. $  ',
+          code: ``,
+        },
+      ],
+    },
+
+    {
+      name: 'CI/CD',
+      questions: [
+        {
+          question: '1. What is CI/CD?',
+          answer:
+            'CI/CD stands for Continuous Integration and Continuous Deployment. It is a set of practices and tools that enable developers to automate the process of integrating code changes, testing, and deploying applications. $ CI/CD helps to improve the speed and quality of software delivery by automating repetitive tasks and reducing manual errors.',
+          code: ``,
+        },
+        {
+          question: '2. What is Continuous Integration (CI)?',
+          answer:
+            'Continuous Integration (CI) is the practice of automatically integrating code changes from multiple developers into a shared repository. $ CI helps to detect and fix integration issues early in the development process by running automated tests and building the application whenever code changes are made.',
+          code: ``,
+        },
+        {
+          question: '3. What is Continuous Deployment (CD)?',
+          answer:
+            'Continuous Deployment (CD) is the practice of automatically deploying code changes to production environments after passing automated tests. $ CD helps to reduce the time and effort required to deploy applications by automating the deployment process and ensuring that only tested and verified code is deployed to production.',
+          code: ``,
+        },
+        {
+          question: '4. What are the benefits of CI/CD?',
+          answer:
+            'The benefits of CI/CD include: $ 1. Faster delivery: CI/CD helps to speed up the software delivery process by automating repetitive tasks and reducing manual errors. $ 2. Improved quality: CI/CD helps to improve the quality of software by running automated tests and ensuring that only tested and verified code is deployed to production. $ 3. Reduced risk: CI/CD helps to reduce the risk of deployment failures by automating the deployment process and ensuring that only tested and verified code is deployed to production. $ 4. Better collaboration: CI/CD helps to improve collaboration between developers, testers, and operations teams by providing a shared platform for integrating code changes, testing, and deploying applications. $ 5. Increased efficiency: CI/CD helps to increase efficiency by automating repetitive tasks and reducing manual errors, allowing developers to focus on writing code and delivering value to customers. $  ',
+          code: ``,
+        },
+        {
+          question: '5. What are some popular CI/CD tools?',
+          answer:
+            'Some popular CI/CD tools include Jenkins, Travis CI, CircleCI, GitLab CI/CD, Azure DevOps, and AWS CodePipeline. These tools provide features for automating the build, test, and deployment processes in CI/CD pipelines.',
+          code: ``,
+        },
+        {
+          question: '6. What is a CI/CD pipeline?',
+          answer:
+            'A CI/CD pipeline is a set of automated processes that enable developers to integrate code changes, run tests, and deploy applications in a continuous manner. A typical CI/CD pipeline includes stages for building the application, running tests, deploying to staging environments, and deploying to production environments.',
+          code: ``,
+        },
+        {
+          question: '7. What is a build server?',
+          answer:
+            'A build server is a server that is responsible for building and testing applications in a CI/CD pipeline. Build servers automatically trigger builds whenever code changes are made and run automated tests to ensure that the application is functioning correctly before deploying it to production environments.',
+          code: ``,
+        },
+        {
+          question: '8. What is a deployment server?',
+          answer:
+            'A deployment server is a server that is responsible for deploying applications to production environments in a CI/CD pipeline. Deployment servers automatically trigger deployments whenever code changes are made and ensure that the application is functioning correctly after deployment.',
+          code: ``,
+        },
+        {
+          question: '9. What is a rollback?',
+          answer:
+            'A rollback is the process of reverting an application to a previous version in case of deployment failures or issues. Rollbacks are an important part of CI/CD pipelines as they help to ensure that applications can be quickly restored to a stable state in case of issues.',
+          code: ``,
+        },
+        {
+          question: '10. What is linting?',
+          answer:
+            'Linting is the process of analyzing code for potential errors, style issues, and best practices. Linting tools help to enforce coding standards and improve code quality by identifying and fixing issues in the codebase.',
+          code: `ng lint`,
+        },
+        {
+          question: '11. What are the steps in a CI/CD pipeline?',
+          answer:
+            'The steps in a CI/CD pipeline typically include: $ 1. Code commit: Developers commit code changes to a shared repository. $ 2. Build: The CI/CD pipeline automatically triggers a build process to compile the application and run automated tests. $ 3. Test: The CI/CD pipeline runs automated tests to ensure that the application is functioning correctly. $ 4. Deploy: The CI/CD pipeline automatically deploys the application to staging environments for further testing. $ 5. Production deployment: After passing all tests, the CI/CD pipeline automatically deploys the application to production environments. $ 6. Monitoring: The CI/CD pipeline monitors the application for issues and performance metrics after deployment. $ 7. Rollback: In case of deployment failures or issues, the CI/CD pipeline can automatically roll back the application to a previous version. $  ',
+          code: ``,
+        },
+      ],
+    },
+    {
+      name: 'WCAG Accessibility',
+      questions: [
+        {
+          question: '1. What is WCAG Accessibility?',
+          answer:
+            'WCAG (Web Content Accessibility Guidelines) is a International standard which is developed by the World Wide Web Consortium (W3C) to provide guidelines for making web content more accessible to people with disabilities. ',
+          code: ``,
+        },
+        {
+          question: '2. What are the principles of WCAG?',
+          answer:
+            'The principles of WCAG are: $ 1. Perceivable: Content must be presented in a way that can be perceived by all users, including those with visual, auditory, or cognitive disabilities. $ 2. Operable: Content must be operable by all users, including those who use assistive technologies or have limited mobility. $ 3. Understandable: Content must be understandable to all users, including those with cognitive disabilities. $ 4. Robust: Content must be robust enough to work with current and future technologies, including assistive technologies. $  ',
+          code: ``,
+        },
+        {
+          question: '3. What are the levels of WCAG conformance?',
+          answer:
+            'The levels of WCAG conformance are: $ 1. Level A: The minimum level of conformance that must be met for a website to be considered accessible. $ 2. Level AA: The intermediate level of conformance that addresses the most common accessibility issues. $ 3. Level AAA: The highest level of conformance that addresses all accessibility issues but may not be achievable for all content. $  ',
+          code: ``,
+        },
+        {
+          question: '4. What are some common WCAG success criteria?',
+          answer:
+            'Some common WCAG success criteria include: $ 1. Text alternatives for non-text content (Level A) $ 2. Captions for audio and video content (Level A) $ 3. Keyboard accessibility (Level A) $ 4. Color contrast (Level AA) $ 5. Resizable text (Level AA) $ 6. Clear navigation and headings (Level AA) $ 7. Error identification and suggestions (Level AA) $ 8. Accessible forms (Level AA) $ 9. Accessible tables (Level AA) $ 10. Accessible multimedia content (Level AAA) $Aria attributes for dynamic content (Level A) $  ',
+        },
+
+        {
+          question: '5. What are some tools for testing WCAG accessibility?',
+          answer:
+            'Some tools for testing WCAG accessibility include: $ 1. WAVE: A web accessibility evaluation tool that provides visual feedback on accessibility issues. $ 2. Axe: An accessibility testing tool that integrates with browser developer tools and provides automated testing for WCAG compliance. $ 3. Lighthouse: A performance and accessibility testing tool built into Chrome DevTools that provides audits for WCAG compliance. $ 4. JAWS: A screen reader that can be used to test the accessibility of web content for visually impaired users. $ 5. NVDA: A free and open-source screen reader that can be used to test the accessibility of web content for visually impaired users. $  ',
+          code: ``,
+        },
+
+        {
+          question: '6. What are some best practices for WCAG accessibility?',
+          answer:
+            'Some best practices for WCAG accessibility include: $ 1. Use semantic HTML to structure content and provide meaning. $ 2. Provide text alternatives for non-text content, such as images and videos. $ 3. Ensure keyboard accessibility for all interactive elements. $ 4. Use sufficient color contrast between text and background colors. $ 5. Provide clear navigation and headings to help users understand the structure of the content. $ 6. Use ARIA attributes to enhance accessibility for dynamic content. $ 7. Test web content with assistive technologies and real users with disabilities to ensure accessibility. $  ',
+          code: ``,
+        },
+
+        {
+          question: '7. What is ARIA?',
+          answer:
+            'ARIA (Accessible Rich Internet Applications) is a set of attributes that can be added to HTML elements to enhance accessibility for users with disabilities. $ ARIA attributes provide additional information about the role, state, and properties of elements, making it easier for assistive technologies to interpret and interact with web content.',
+          code: ``,
+        },
+        {
+          question: '8. Manual Testing vs Automated Testing for WCAG',
+          answer:
+            'Manual testing involves using assistive technologies and real users with disabilities to test the accessibility of web content. Automated testing involves using tools and scripts to test the accessibility of web content. $ Both manual and automated testing are important for ensuring WCAG compliance, as automated tools may not catch all accessibility issues. $ Manual testing is essential for understanding the user experience and identifying issues that may not be detected by automated tools. $ Automated testing is useful for quickly identifying common accessibility issues and providing a baseline for manual testing. $',
+        },
+      ],
+    },
+    {
+      name: 'CORS Error',
+      questions: [
+        {
+          question: '1. What is CORS?',
+          answer:
+            'CORS (Cross-Origin Resource Sharing) is a security feature implemented by web browsers to prevent unauthorized access to resources from different origins. $ CORS allows servers to specify which origins are allowed to access their resources, enabling secure cross-origin requests.',
+          code: ``,
+        },
+        {
+          question: '2. What is a CORS error?',
+          answer:
+            'A CORS error occurs when a web application attempts to make a cross-origin request to a server that does not allow the request from the origin of the web application. $ CORS errors can occur when making API calls, loading resources, or accessing data from different domains or origins. $$Example: suppose we have a web application hosted on example.com that tries to make an API call to api.example.com. If the server at api.example.com does not allow requests from example.com, a CORS error will occur. $  ',
+          code: ``,
+        },
+        {
+          question: '3. How to fix CORS errors?',
+          answer:
+            'To fix CORS errors, the server must be configured to allow requests from the origin of the web application. This can be done by adding appropriate CORS headers to the server response. $ Common CORS headers include: $ 1. Access-Control-Allow-Origin: Specifies which origins are allowed to access the resource. $ 2. Access-Control-Allow-Methods: Specifies which HTTP methods are allowed for cross-origin requests. $ 3. Access-Control-Allow-Headers: Specifies which headers are allowed in cross-origin requests. $ 4. Access-Control-Allow-Credentials: Specifies whether credentials (cookies, authorization headers) are allowed in cross-origin requests. $  ',
+          code: ``,
+        },
+        {
+          question: '4. how to fix CORS error in Angular?',
+          answer:
+            'To fix CORS errors in Angular applications, using proxy configuration in the Angular development server. $ This allows you to bypass CORS restrictions during development by proxying requests to the target server. $ To set up a proxy configuration, create a proxy.conf.json file in the root of your Angular project. $update the Angular JSON file to include the proxy configuration. $replace the API URL in your Angular service with the proxy URL. $  ',
+            code: `{
+          "/api": {
+            "target": "https://api.example.com",
+            "secure": true,
+            "changeOrigin": true,
+            "logLevel": "debug"
+          }
+        }`,
+        },
+      ],
+    },
+    
+        
+            
+
+
+
+          
+
     // Add more topics here
   ];
   topic: any;
