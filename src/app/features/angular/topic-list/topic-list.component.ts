@@ -719,6 +719,7 @@ export class LoginStatusComponent {
         },
       ],
     },
+    //Pipe
     {
       name: 'Pipe',
       questions: [
@@ -817,6 +818,7 @@ export class FormatNumberPipe implements PipeTransform {
         },
       ],
     },
+    //Compilation
     {
       name: 'Compilation',
       questions: [
@@ -848,6 +850,7 @@ export class FormatNumberPipe implements PipeTransform {
         },
       ],
     },
+    //Debugging
     {
       name: 'Debugging',
       questions: [
@@ -867,6 +870,7 @@ export class FormatNumberPipe implements PipeTransform {
         },
       ],
     },
+    //Data Binding
     {
       name: 'Data Binding',
       questions: [
@@ -917,6 +921,7 @@ export class FormatNumberPipe implements PipeTransform {
         },
       ],
     },
+    //Data Communication
     {
       name: 'Data Communication',
       questions: [
@@ -964,6 +969,7 @@ export class FormatNumberPipe implements PipeTransform {
         },
       ],
     },
+    //Directives
     {
       name: 'Directives',
       questions: [
@@ -1069,6 +1075,7 @@ export class FormatNumberPipe implements PipeTransform {
         },
       ],
     },
+    //HostListener & HostBinding
     {
       name: 'HostListener & HostBinding',
       questions: [
@@ -1142,6 +1149,7 @@ export class FormatNumberPipe implements PipeTransform {
         },
       ],
     },
+    //RXJS
     {
       name: 'RXJS',
       questions: [
@@ -1175,7 +1183,8 @@ export class FormatNumberPipe implements PipeTransform {
               const mappedObservable = observable.pipe(map((value) => value.toUpperCase()));  `,
         },
         {
-          question: '4. What is the difference between creation and transformation operators?',
+          question:
+            '4. What is the difference between creation and transformation operators?',
           answer:
             'Creation operators are used to create new observables, while transformation operators are used to manipulate and transform existing observables. $ Creation operators include of, from, and interval, while transformation operators include map, filter, and mergeMap,switchMap,concatMap. $  ',
           code: `import { of, from, interval } from 'rxjs';
@@ -1184,7 +1193,8 @@ export class FormatNumberPipe implements PipeTransform {
               const observable3 = interval(1000); // Creation operator`,
         },
         {
-          question: '5. What is the difference between cold and hot observables?',
+          question:
+            '5. What is the difference between cold and hot observables?',
           answer:
             'Cold observables are observables that do not start emitting values until there is a subscriber. $ Cold observables are created using the Observable constructor and are typically used for asynchronous operations, such as HTTP requests. $ Hot observables are observables that start emitting values regardless of whether there are subscribers. $ Hot observables are typically used for events and user interactions. $  ',
           code: `import { Observable } from 'rxjs';
@@ -1237,11 +1247,10 @@ export class FormatNumberPipe implements PipeTransform {
               asyncSubject.next('Hello');
               asyncSubject.complete();`,
         },
-        {
-
-        }
-        ],
+        {},
+      ],
     },
+    //Observables and observers
     {
       name: 'Observables and observers',
       questions: [
@@ -1280,7 +1289,8 @@ export class FormatNumberPipe implements PipeTransform {
               subject.next('World');`,
         },
         {
-          question: '4. What is the difference between a cold and hot observable?',
+          question:
+            '4. What is the difference between a cold and hot observable?',
           answer:
             'Cold observables are observables that do not start emitting values until there is a subscriber. $ Cold observables are created using the Observable constructor and are typically used for asynchronous operations, such as HTTP requests. $ Hot observables are observables that start emitting values regardless of whether there are subscribers. $ Hot observables are typically used for events and user interactions. $  ',
           code: `import { Observable } from 'rxjs';
@@ -1296,7 +1306,8 @@ export class FormatNumberPipe implements PipeTransform {
               });`,
         },
         {
-          question: '5. What is the difference between a Subject and an Observable?',
+          question:
+            '5. What is the difference between a Subject and an Observable?',
           answer:
             'An observable is a data type that represents a stream of values over time, while a subject is a special type of observable that allows you to multicast values to multiple subscribers. $ Observables are typically used for asynchronous operations, while subjects are used for sharing data between different parts of an application. $  ',
           code: `import { Subject } from 'rxjs';
@@ -1304,8 +1315,9 @@ export class FormatNumberPipe implements PipeTransform {
               subject.subscribe((value) => console.log(value));
               subject.next('Hello');`,
         },
-      ]
+      ],
     },
+    //Service
     {
       name: 'Service',
       questions: [
@@ -1362,10 +1374,11 @@ export class FormatNumberPipe implements PipeTransform {
                 getData() {
                   return this.http.get('https://api.example.com/data');
                 }
-              }`, 
+              }`,
         },
         {
-          question: '5. What is the purpose of @Injectable decorator in Angular?',
+          question:
+            '5. What is the purpose of @Injectable decorator in Angular?',
           answer:
             '@Injectable is a decorator in Angular that marks a class as a service and allows it to be injected into other classes. $ @Injectable allows you to define dependencies for the service and specify how the service should be instantiated. $  ',
           code: `import { Injectable } from '@angular/core';
@@ -1381,29 +1394,457 @@ export class FormatNumberPipe implements PipeTransform {
           answer:
             'most of the frontend applications need to communicate with a backend server to fetch or send data. $ HttpClientModule is a built-in service in Angular that allows you to make HTTP requests to a server. $ HttpClientModule provides methods for making GET, POST, PUT, DELETE, and other types of HTTP requests. $ HttpClientModule can be imported into your application module and injected into your components and services. $  ',
         },
+        {
+          question: '7. What is Http Interceptor in Angular?',
+          answer:
+            'Http Interceptor is a service in Angular that allows you to intercept and modify HTTP requests and responses. $ Http Interceptor can be used to add headers, handle errors, and perform other actions on HTTP requests and responses. $ Http Interceptor can be created by implementing the HttpInterceptor interface and providing it in the root module. $  ',
+          code: `import { Injectable } from '@angular/core';
+              import { HttpInterceptor, HttpRequest, HttpHandler, HttpEvent } from '@angular/common/http';
+              import { Observable } from 'rxjs';
+              @Injectable()
+              export class MyInterceptor implements HttpInterceptor {
+                intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+                  const clonedRequest = request.clone({
+                    setHeaders: {
+                      Authorization: 'Bearer token'
+                    }
+                  });
+                  return next.handle(clonedRequest);
+                }
+              }`,
+        },
       ],
     },
-       
+    //Error Handling
+    {
+      name: 'Error Handling',
+      questions: [
+        {
+          question: '1. What is Error Handling in Angular?',
+          answer:
+            'Error handling in Angular is the process of catching and handling errors that occur during the execution of an Angular application. $ Error handling allows you to gracefully handle errors and provide feedback to users. $ Angular provides several mechanisms for error handling, including global error handlers, HTTP interceptors, and try-catch blocks. $  ',
+          code: ``,
+        },
 
-      
-      
+        {
+          question: '2. type of Error Handling in Angular',
+          answer:
+            'There are several types of error handling in Angular, including: $ 1. Global Error Handling: Catching and handling errors that occur in the entire application using a global error handler. $ 2. HTTP Error Handling: Catching and handling errors that occur during HTTP requests using HTTP interceptors. $ 3. Component Error Handling: Catching and handling errors that occur in individual components using try-catch blocks. $ 4. Service Error Handling: Catching and handling errors that occur in individual services using try-catch blocks. $ 5. Error Handling in Observables: Catching and handling errors that occur in Observables using the catchError operator. $ 6. Error Handling in RxJS: Catching and handling errors that occur in RxJS using the catchError operator. $ ',
+          code: ``,
+        },
+        {
+          question: '3. What is a Global Error Handler in Angular?',
+          answer:
+            'A global error handler is a service that catches and handles errors that occur in an Angular application. $ A global error handler can be used to log errors, display error messages, and perform other actions when an error occurs. $ A global error handler can be created by implementing the ErrorHandler interface and providing it in the root module. $$Example: suppose we want to create a global error handler that logs errors to the console. $  ',
+          code: `import { ErrorHandler } from '@angular/core';
+              export class GlobalErrorHandler implements ErrorHandler {
+                handleError(error: any) {
+                  console.error('Global error:', error);
+                }
+              }`,
+        },
+        {
+          question:
+            '4. how do we handle errors using try-catch blocks in Angular?',
+          answer:
+            'In Angular, you can use try-catch blocks to handle errors in individual components or services. $ A try-catch block is a block of code that contains a potential error and a block of code that will be executed if an error occurs. $ The catch block contains code that will be executed if an error occurs. $  ',
+          code: `import { Component } from '@angular/core';
+              @Component({
+                selector: 'app-my-component',
+                templateUrl: './my-component.component.html'
+              })
+              export class MyComponent {
+                ngOnInit() {
+                  try {
+                    // Code that may throw an error
+                  } catch (error) {
+                    console.error('Error:', error);
+                  }
+                }
+              }`,
+        },
+        {
+          question:
+            '5. how do we handle errors using HTTP interceptors in Angular?',
+          answer:
+            'In Angular, you can use HTTP interceptors to handle errors that occur during HTTP requests. $ HTTP interceptors are a way to intercept HTTP requests and responses and perform custom actions. $ HTTP interceptors can be used to handle errors that occur during HTTP requests, such as network errors or server errors. $  ',
+          code: ``,
+        },
+        {
+          question: '6. how do we handle errors using Observables in Angular?',
+          answer:
+            'In Angular, you can use Observables to handle errors that occur in asynchronous operations. $ Observables are a way to represent a stream of values over time and can be used to handle events, HTTP requests, and other asynchronous operations. $ Observables can be used to handle errors that occur during asynchronous operations using the catchError operator. $$Example: suppose we want to handle errors that occur during an HTTP request using an observable. $  ',
+          code: ``,
+        },
+        {
+          question: '7. how do we handle errors using RxJS in Angular?',
+          answer:
+            'In Angular, you can use RxJS to handle errors that occur in RxJS operators. $ RxJS is a library for working with asynchronous and event-based data streams. $ RxJS provides a variety of operators that can be used to handle errors that occur in RxJS operators. $  ',
+          code: ` import { catchError } from 'rxjs/operators';
+              import { of } from 'rxjs';
+              import { HttpClient } from '@angular/common/http';
+              import { Injectable } from '@angular/core';
+              @Injectable({
+                providedIn: 'root'`,
+        },
+        {
+          question: '8. how do we handle errors using ErrorHandler in Angular?',
+          answer:
+            'In Angular, you can use the ErrorHandler class to handle errors that occur in an Angular application. $ The ErrorHandler class is a built-in service that provides a way to catch and handle errors that occur in an Angular application. $ The ErrorHandler class can be extended to create a custom error handler that can be used to log errors, display error messages, and perform other actions when an error occurs. $  ',
+          code: ``,
+        },
+      ],
+    },
+    //Angular Forms
+    {
+      name: 'Angular Forms',
+      questions: [
+        {
+          question: '1. What is Angular Forms?',
+          answer:
+            'Angular Forms is a module in Angular that provides a way to create and manage forms in an Angular application. $ Angular Forms provides two types of forms: reactive forms and template-driven forms. $ Reactive forms are a way to create forms using reactive programming principles, while template-driven forms are a way to create forms using Angular templates. $  ',
+          code: ``,
+        },
+        {
+          question:
+            '2. What is the difference between Reactive Forms and Template-Driven Forms?',
+          answer:
+            'Reactive forms are a way to create forms using reactive programming principles, while template-driven forms are a way to create forms using Angular templates. $ Reactive forms provide more control over form validation and state management, while template-driven forms provide a simpler way to create forms using Angular templates. $  ',
+          code: ``,
+        },
+        {
+          question: '3. How to create a Reactive Form in Angular?',
+          answer:
+            'To create a reactive form in Angular, you need to import the ReactiveFormsModule and use the FormGroup and FormControl classes to create the form model. $ You can then bind the form model to the template using the formGroup directive. $  ',
+          code: `import { Component } from '@angular/core';
+              import { FormGroup, FormControl } from '@angular/forms';
+              @Component({
+                selector: 'app-my-component',
+                templateUrl: './my-component.component.html'
+              })
+              export class MyComponent {
+                myForm = new FormGroup({
+                  name: new FormControl(''),
+                  email: new FormControl('')
+                });
+              }`,
+        },
+        {
+          question: '4. How to create a Template-Driven Form in Angular?',
+          answer:
+            'To create a template-driven form in Angular, you need to import the FormsModule and use the ngModel directive to bind the form controls to the template. $ You can then use the ngForm directive to create the form model. $  ',
+          code: `import { Component } from '@angular/core';
+              @Component({
+                selector: 'app-my-component',
+                templateUrl: './my-component.component.html'
+              })
+              export class MyComponent {
+                name = '';
+                email = '';
+              }`,
+        },
+        {
+          question: '5. What is FormGroup in Angular?',
+          answer:
+            'FormGroup is a class in Angular that represents a group of form controls. $ FormGroup is used to manage the state and validation of a group of form controls. $ FormGroup can be used to create complex forms with nested form groups and form arrays. $  ',
+          code: `import { FormGroup, FormControl } from '@angular/forms';
+              const myForm = new FormGroup({
+                name: new FormControl(''),
+                email: new FormControl('')
+              });`,
+        },
+        {
+          question: '6. What is FormControl in Angular?',
+          answer:
+            'FormControl is a class in Angular that represents a single form control. $ FormControl is used to manage the state and validation of a single form control. $ FormControl can be used to create simple forms with individual form controls. $  ',
+          code: `import { FormControl } from '@angular/forms';
+              const nameControl = new FormControl('');`,
+        },
+        {
+          question: '7. What is FormArray in Angular?',
+          answer:
+            'FormArray is a class in Angular that represents an array of form controls. $ FormArray is used to manage the state and validation of an array of form controls. $ FormArray can be used to create dynamic forms with variable numbers of form controls. $  ',
+          code: `import { FormArray } from '@angular/forms';
+              const myFormArray = new FormArray([
+                new FormControl(''),
+                new FormControl('')
+              ]);`,
+        },
+        {
+          question: '8. What is the purpose of Validators in Angular Forms?',
+          answer:
+            'Validators are functions that are used to validate form controls in Angular Forms. $ Validators can be used to check for required fields, minimum and maximum values, email format, and other validation rules. $ Validators can be applied to form controls using the validators property when creating the form model. $  ',
+          code: `import { Validators } from '@angular/forms';
+              const myForm = new FormGroup({
+                name: new FormControl('', [Validators.required]),
+                email: new FormControl('', [Validators.email])
+              });`,
+        },
+        {
+          question: '9. What is the purpose of ReactiveFormsModule in Angular?',
+          answer:
+            'ReactiveFormsModule is a module in Angular that provides support for reactive forms. $ ReactiveFormsModule provides the FormGroup, FormControl, and FormArray classes for creating and managing reactive forms. $ ReactiveFormsModule also provides directives for binding the form model to the template. $  ',
+          code: `import { ReactiveFormsModule } from '@angular/forms';`,
+        },
+        {
+          question: '10. What is the purpose of FormsModule in Angular?',
+          answer:
+            'FormsModule is a module in Angular that provides support for template-driven forms. $ FormsModule provides the ngModel directive for binding form controls to the template. $ FormsModule also provides directives for creating and managing template-driven forms. $  ',
+          code: `import { FormsModule } from '@angular/forms';`,
+        },
+        {
+          question: '11. What is the purpose of ngModel in Angular Forms?',
+          answer:
+            'ngModel is a directive in Angular that binds a form control to a template. $ ngModel is used to create two-way data binding between the form control and the template. $ ngModel can be used with template-driven forms to bind form controls to the template. $  ',
+          code: `import { FormsModule } from '@angular/forms';
+              <input type="text" [(ngModel)]="name" />`,
+        },
+        {
+          question: '12. What is the purpose of ngForm in Angular Forms?',
+          answer:
+            'ngForm is a directive in Angular that creates a form model for template-driven forms. $ ngForm is used to manage the state and validation of the form. $ ngForm can be used to create complex forms with nested form groups and form arrays. $  ',
+          code: `import { FormsModule } from '@angular/forms';
+              <form #myForm="ngForm">...</form>`,
+        },
+        {
+          question: '13. What is formBuilder in Angular Forms?',
+          answer:
+            'FormBuilder is a service in Angular that provides a way to create form controls and form groups. $ FormBuilder provides methods for creating form controls and form groups with validation rules. $ FormBuilder can be used to simplify the creation of reactive forms. $  ',
+          code: `import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+              constructor(private fb: FormBuilder) {}
+              myForm: FormGroup = this.fb.group({
+                name: ['', Validators.required],
+                email: ['', Validators.email]
+              });`,
+        },
+        {
+          question:
+            '14. What is the purpose of formGroupName in Angular Forms?',
+          answer:
+            'formGroupName is a directive in Angular that binds a nested form group to a template. $ formGroupName is used to create nested form groups within a parent form group. $ formGroupName can be used to create complex forms with nested form groups and form arrays. $  ',
+          code: `import { FormGroup, FormBuilder } from '@angular/forms';
+              <form [formGroup]="myForm">
+                <div formGroupName="address">...</div>
+              </form>`,
+        },
+        {
+          question:
+            '15. What is the purpose of formArrayName in Angular Forms?',
+          answer:
+            'formArrayName is a directive in Angular that binds a form array to a template. $ formArrayName is used to create dynamic forms with variable numbers of form controls. $ formArrayName can be used to create complex forms with nested form groups and form arrays. $  ',
+          code: `import { FormArray, FormGroup } from '@angular/forms';
+              <form [formGroup]="myForm">
+                <div formArrayName="addresses">...</div>
+              </form>`,
+        },
+        {
+          question:
+            '16. What is the purpose of formControlName in Angular Forms?',
+          answer:
+            'formControlName is a directive in Angular that binds a form control to a template. $ formControlName is used to create two-way data binding between the form control and the template. $ formControlName can be used with reactive forms to bind form controls to the template. $  ',
+          code: `import { FormGroup } from '@angular/forms';
+              <form [formGroup]="myForm">
+                <input formControlName="name" />
+              </form>`,
+        },
+        {
+          question:
+            '17. difference between dirty, touched, and pristine in Angular Forms',
+          answer:
+            'dirty: A form control is dirty if the user has changed its value. $ touched: A form control is touched if the user has focused and blurred it. $ pristine: A form control is pristine if the user has not changed its value. $  ',
+          code: `import { FormGroup } from '@angular/forms';
+              const myForm = new FormGroup({
+                name: new FormControl(''),
+                email: new FormControl('')
+              });
+              console.log(myForm.controls.name.dirty); // true if the user has changed the value
+              console.log(myForm.controls.name.touched); // true if the user has focused and blurred the control
+              console.log(myForm.controls.name.pristine); // true if the user has not changed the value`,
+        },
+        {
+          question:
+            '18. how to display validation errors in reactive forms in Angular Forms',
+          answer:
+            'To display validation errors in Angular Forms, you can use the errors property of the form control. $ The errors property contains an object with the validation errors for the form control. $ You can use the errors property to display error messages in the template.  $  ',
+          code: `In template:
+              <form [formGroup]="myForm">
+                <input formControlName="name" />;
+                <div *ngIf="myForm.controls.name.errors?.required">Name is required</div>
+                <div *ngIf="myForm.controls.name.errors?.minlength">Name must be at least 3 characters long</div> 
+                <div *ngIf="myForm.controls.name.errors?.maxlength">Name must be at most 10 characters long</div>
+                `,
+        },
+        {
+          question:
+            '19. how to display validation errors in template-driven forms in Angular Forms',
+          answer:
+            'To display validation errors in Angular Forms, you can use the ngModel and ngForm directives. $ The ngModel directive binds the form control to the template, and the ngForm directive creates the form model. $ You can use the ngModel and ngForm directives to display error messages in the template.  $  ',
+          code: `In template:
+              <form #myForm="ngForm">
+                <input name="name" [(ngModel)]="name" required minlength="3" maxlength="10" />
+                <div *ngIf="myForm.controls.name.errors?.required">Name is required</div>
+                <div *ngIf="myForm.controls.name.errors?.minlength">Name must be at least 3 characters long</div> 
+                <div *ngIf="myForm.controls.name.errors?.maxlength">Name must be at most 10 characters long</div>
+                `,
+        },
+        {
+          question: '20. how to reset a form in Angular Forms',
+          answer:
+            'To reset a form in Angular Forms, you can use the reset method of the form group or form array. $ The reset method resets the form controls to their initial values and marks them as pristine and untouched. $  ',
+          code: `import { FormGroup } from '@angular/forms';
+              const myForm = new FormGroup({
+                name: new FormControl(''),
+                email: new FormControl('')
+              });
+              myForm.reset();`,
+        },
 
-     
+        {
+          question: '21. how to disable a form control in Angular Forms',
+          answer:
+            'To disable a form control in Angular Forms, you can use the disable method of the form control. $ The disable method disables the form control and prevents user input. $  ',
+          code: `import { FormControl } from '@angular/forms';
+              const nameControl = new FormControl('');
+              nameControl.disable();`,
+        },
 
+        {
+          question: '22. how to enable a form control in Angular Forms',
+          answer:
+            'To enable a form control in Angular Forms, you can use the enable method of the form control. $ The enable method enables the form control and allows user input. $  ',
+          code: `import { FormControl } from '@angular/forms';
+              const
+              nameControl = new FormControl('');  
+              nameControl.enable();`,
+        },
+        {
+          question: '23. what is async validation in Angular Forms',
+          answer:
+            'Async validation is a way to validate form controls asynchronously in Angular Forms. $ Async validation allows you to perform validation checks that require an HTTP request or other asynchronous operation. $ Async validation can be used to check for unique usernames, email addresses, and other validation rules that require an asynchronous operation. $  ',
+          code: `import { AbstractControl, ValidationErrors } from '@angular/forms';
+              import { Observable, of } from 'rxjs';
+              import { map } from 'rxjs/operators';
+              export function asyncValidator(control: AbstractControl): Observable<ValidationErrors | null> {
+                return of(null).pipe(
+                  map(() => {
+                    // Perform async validation check
+                    return null; // Return null if valid, or return an object with validation errors if invalid
+                  })
+                );
+              }`,
+        },
+      ],
+    },
+    //Angular files
+    {
+      name: 'Angular Files',
+      questions: [
+        {
+          question: '1. What is the purpose of main.ts in Angular?',
+          answer:
+            'The main.ts file is the entry point of an Angular application. $ It is responsible for bootstrapping the root module and starting the application. $ The main.ts file typically imports the AppModule and calls the platformBrowserDynamic().bootstrapModule() method to start the application. $  ',
+          code: `import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+              import { AppModule } from './app/app.module';
+              platformBrowserDynamic()
+                .bootstrapModule(AppModule)
+                .catch((err) => console.error(err));`,
+        },
+        {
+          question: '2. What is the purpose of polyfills.ts in Angular?',
+          answer:
+            'The polyfills.ts file is used to include polyfills for modern JavaScript features that may not be supported in all browsers. $ Polyfills are scripts that provide compatibility for older browsers by adding support for newer features. $ The polyfills.ts file typically includes polyfills for features such as Promises, Fetch API, and other modern JavaScript features. $  ',
+          code: `import 'zone.js'; // Included with Angular CLI.`,
+        },
+        {
+          question: '3. What is the purpose of styles.css in Angular?',
+          answer:
+            'The styles.css file is used to define global styles for an Angular application. $ It is typically used to include CSS styles that apply to the entire application, such as fonts, colors, and layout styles. $ The styles.css file can be imported into components or modules to apply global styles. $  ',
+          code: `/* Global styles for the application */`,
+        },
+        {
+          question: '4. What is the purpose of environment.ts in Angular?',
+          answer:
+            'The environment.ts file is used to define environment-specific configuration settings for an Angular application. $ It is typically used to define settings such as API endpoints, feature flags, and other configuration settings that may vary between development, staging, and production environments. $ The environment.ts file can be imported into components or services to access environment-specific settings. $  ',
+          code: `export const environment = {
+                production: false,
+                apiUrl: 'https://api.example.com'
+              };`,
+        },
+        {
+          question: '5. What is the purpose of angular.json in Angular?',
+          answer:
+            'The angular.json file is the configuration file for an Angular application. $ It contains settings for the Angular CLI, including build options, project structure, and other configuration settings. $ The angular.json file can be used to customize the build process and configure different environments for the application. $  ',
+          code: `{
+                "projects": {
+                  "my-app": {
+                    "architect": {
+                      "build": {
+                        "options": {
+                          "outputPath": "dist/my-app"
+                        }
+                      }
+                    }
+                  }
+                }
+              }`,
+        },
+        {
+          question: '6. What is the purpose of tsconfig.json in Angular?',
+          answer:
+            'The tsconfig.json file is the configuration file for TypeScript in an Angular application. $ It contains settings for the TypeScript compiler, including target version, module resolution, and other TypeScript-specific settings. $ The tsconfig.json file can be used to customize the TypeScript compilation process and configure different environments for the application. $  ',
+          code: `{
+                "compilerOptions": {
+                  "target": "es2015",
+                  "module": "esnext",
+                  "lib": ["es2018", "dom"],
+                  "outDir": "./dist/out-tsc",
+                  "sourceMap": true,
+                  "declaration": false,
+                  "moduleResolution": "node",
+                  "experimentalDecorators": true,
+                  "emitDecoratorMetadata": true,
+                  "skipLibCheck": true,
+                  "strict": true
+                }
+              }`,
+        },
+        {
+          question: '7. What is the purpose of package.json in Angular?',
+          answer:
+            'The package.json file is the configuration file for Node.js packages in an Angular application. $ It contains information about the application, including dependencies, scripts, and other configuration settings. $ The package.json file can be used to manage dependencies and scripts for building and running the application. $  ',
+          code: `{
+                "name": "my-app",
+                "version": "0.0.0",
+                "scripts": {
+                  "ng": "ng",
+                  "start": "ng serve",
+                  "build": "ng build",
+                  "test": "ng test"
+                },
+                "dependencies": {
+                  "@angular/core": "^12.0.0"
+                }
+              }`,
+        },
+        {
+          question: '8. What is the purpose of app.module.ts in Angular?',
+          answer:
+            'The app.module.ts file is the root module of an Angular application. $ It is responsible for declaring components, importing modules, and providing services for the application. $ The app.module.ts file typically imports the BrowserModule, AppRoutingModule, and other modules required for the application. $  ',
+          code: `import { NgModule } from '@angular/core';
+              import { BrowserModule } from '@angular/platform-browser';
+              import { AppRoutingModule } from './app-routing.module';
+              import { AppComponent } from './app.component';
+              @NgModule({
+                declarations: [AppComponent],
+                imports: [BrowserModule, AppRoutingModule],
+                providers: [],
+                bootstrap: [AppComponent]
+              })
+              export class AppModule {} `,
+        },
+      ],
+    },
 
-    
-    
-
-        
-
-        
-        
-
-        
-          
-    
-    
-   
     // Add more topics here
   ];
   topic: any;
