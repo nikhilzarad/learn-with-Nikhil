@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,8 @@ import { FormsModule } from '@angular/forms';
 export class TopicListComponent {
   searchTerm: string = '';
   topics = [
+    //Angular Signals
+
     {
       name: 'Angular Signals',
       questions: [
@@ -106,6 +108,7 @@ export class LoginStatusComponent {
         },
       ],
     },
+    //Angular Lifecycle Hooks
     {
       name: 'Lifecycle Hooks',
       questions: [
@@ -249,6 +252,7 @@ export class LoginStatusComponent {
         },
       ],
     },
+    //Angular Routing
     {
       name: 'Angular Routing',
       questions: [
@@ -403,6 +407,7 @@ export class LoginStatusComponent {
         },
       ],
     },
+    //State Management
     {
       name: 'State Management',
       questions: [
@@ -419,7 +424,7 @@ export class LoginStatusComponent {
           code: ``,
         },
         {
-          question: '11. what is different way to manage state in angular?',
+          question: ' what is different way to manage state in angular?',
           answer:
             'There are several ways to manage state in Angular applications, including: $ 1. Local component state: Each component can manage its own state using properties and methods. using @Input and @Output decorators to pass data between parent and child components. $$ 2. Services: Services can be used to share state between components and manage application-wide state. Services can use RxJS subjects or BehaviorSubjects to create observables for state changes. $$ 3. State management libraries: Libraries like NgRx, Akita, NGXS, and MobX provide more advanced state management solutions for larger applications. These libraries offer features like centralized stores, actions, reducers, and selectors to manage application state more effectively. $$ 4. Signals: Signals are a new way to manage state in Angular applications. They are reactive primitives that allow components to automatically update when the signal value changes. Signals can be used for local UI state, computed values, and more. $$ 5. NgRx Component Store: NgRx Component Store is a lightweight state management solution for managing local component state in Angular applications. It provides a simple API for creating stores and managing state without the complexity of NgRx. $  ',
         },
@@ -467,6 +472,7 @@ export class LoginStatusComponent {
         },
       ],
     },
+    //Performance Optimization
     {
       name: 'Performance Optimization',
       questions: [
@@ -549,7 +555,7 @@ export class LoginStatusComponent {
         },
       ],
     },
-
+    //CI/CD
     {
       name: 'CI/CD',
       questions: [
@@ -621,6 +627,7 @@ export class LoginStatusComponent {
         },
       ],
     },
+    //WCAG Accessibility
     {
       name: 'WCAG Accessibility',
       questions: [
@@ -675,6 +682,7 @@ export class LoginStatusComponent {
         },
       ],
     },
+    // CORS Error
     {
       name: 'CORS Error',
       questions: [
@@ -700,7 +708,7 @@ export class LoginStatusComponent {
           question: '4. how to fix CORS error in Angular?',
           answer:
             'To fix CORS errors in Angular applications, using proxy configuration in the Angular development server. $ This allows you to bypass CORS restrictions during development by proxying requests to the target server. $ To set up a proxy configuration, create a proxy.conf.json file in the root of your Angular project. $update the Angular JSON file to include the proxy configuration. $replace the API URL in your Angular service with the proxy URL. $  ',
-            code: `{
+          code: `{
           "/api": {
             "target": "https://api.example.com",
             "secure": true,
@@ -711,17 +719,695 @@ export class LoginStatusComponent {
         },
       ],
     },
+    {
+      name: 'Pipe',
+      questions: [
+        {
+          question: '1. What is Pipe in Angular?',
+          answer:
+            'Angular Pipes are used to transform data in templates. $ Pipes accept data as input and transform it into a desired output format. $ Pipes can be used to format dates, currency, numbers, and more. $ Pipes can also be chained together to apply multiple transformations to the same data. pipes are simple functions that we can directly apply in expression. $$ Example: suppose we have a date value that we want to format in a specific way. We can use the date pipe to format the date value in the desired format. $  ',
+          code: `{{ dateValue | date:'shortDate' }}`,
+        },
+        {
+          question: '2. What are the different types of Pipes in Angular?',
+          answer:
+            'There are several built-in pipes in Angular, including: $ 1. DatePipe: Formats date values. $ 2. CurrencyPipe: Formats currency values. $ 3. DecimalPipe: Formats decimal numbers. $ 4. PercentPipe: Formats percentage values. $ 5. JsonPipe: Converts an object to a JSON string. $ 6. AsyncPipe: Subscribes to an observable and returns the latest value emitted by the observable. $ 7. Custom Pipes: You can create your own custom pipes to transform data in specific ways. $  ',
+          code: ``,
+        },
+        {
+          question: '3. How to create a custom Pipe in Angular?',
+          answer:
+            'To create a custom pipe in Angular, you need to create a new class that implements the PipeTransform interface and decorate it with the @Pipe decorator. $ The PipeTransform interface requires you to implement the transform method, which takes input data and returns the transformed output data. $ You can also specify any additional parameters that your pipe may require in the transform method. $$ Example: suppose we want to create a custom pipe that converts a date and time into australian time. $first, we create a new class called AustralianTimePipe and implement the PipeTransform interface. $  ',
+          code: `import { Pipe, PipeTransform } from '@angular/core';
+import { formatDate } from '@angular/common';
+@Pipe({
+  name: 'australianTime',
+})
+export class AustralianTimePipe implements PipeTransform {
+  transform(value: string): string {
+    const date = new Date(value);
+    return formatDate(date, 'dd/MM/yyyy HH:mm:ss', 'en-AU');
+    }
+}
+`,
+        },
+        {
+          question: '4. what is pure and impure pipe?',
+          answer:
+            'Pure pipes are pipes that only depend on the input data and do not have any side effects. $ Pure pipes are only re-evaluated when the input data changes. $ Impure pipes are pipes that may have side effects or depend on external data. $ Impure pipes are re-evaluated every time change detection runs, regardless of whether the input data has changed. custom pipes are pure pipes by default. $  ',
+          code: `@Pipe({
+  name: 'myPipe',
+  pure: false,
+})
+export class MyPipe implements PipeTransform {
+  transform(value: string): string {
+    // Perform some transformation
+    return value.toUpperCase();
+  }
+}`,
+        },
+        {
+          question: '5. What is AsyncPipe in Angular?',
+          answer:
+            'AsyncPipe is a built-in pipe in Angular that allows you to subscribe to an observable and automatically unsubscribe when the component is destroyed. $ AsyncPipe is useful for displaying data from observables in templates without having to manually manage subscriptions. $  ',
+          code: `{{ observableData | async }}
+
+
+`,
+        },
+        {
+          question: '6. What is the difference between Pipe and Filter?',
+          answer:
+            'Pipes are used to transform data in templates, while filters are used to filter data in lists or collections. $ Pipes can be used to format data, while filters can be used to filter data based on specific criteria. $ Pipes are typically used in templates, while filters are typically used in component logic. $  ',
+          code: ``,
+        },
+        {
+          question: '7. What is the parameterized Pipe?',
+          answer:
+            'Parameterized pipes are pipes that accept additional parameters to customize the transformation. $ You can pass parameters to a pipe using the colon (:) syntax in the template. $ Example: suppose we have a custom pipe that formats a number with a specified number of decimal places. $  ',
+          code: `import { Pipe, PipeTransform } from '@angular/core';
+import { DecimalPipe } from '@angular/common';
+@Pipe({
+  name: 'formatNumber',
+})
+export class FormatNumberPipe implements PipeTransform {
+  constructor(private decimalPipe: DecimalPipe) {}
+  transform(value: number, decimalPlaces: number): string {
+    return this.decimalPipe.transform(value, );
+  }
+}`,
+        },
+        {
+          question: '8. What is the chaining of Pipes?',
+          answer:
+            'Pipes can be chained together in Angular templates to perform multiple transformations on the same data. $ When chaining pipes, the output of one pipe becomes the input of the next pipe in the chain. $ Example: suppose we have a date value that we want to format and convert to uppercase. $  ',
+          code: `{{ date | date:'medium' | uppercase }}`,
+        },
+        {
+          question: '9. What is the slice Pipe?',
+          answer:
+            'The slice pipe is a built-in pipe in Angular that allows you to extract a portion of an array or string. $ The slice pipe takes two parameters: the start index and the end index. $ Example: suppose we have an array of items and we want to display only a portion of the array. $  ',
+          code: `{{ items | slice:0:3 }}`,
+        },
+        {
+          question: '10. What is the json Pipe?',
+          answer:
+            'The json pipe is a built-in pipe in Angular that converts an object or array into a JSON string. $ The json pipe is useful for debugging and displaying complex data structures in templates. $ Example: suppose we have an object that we want to display as a JSON string. $  ',
+          code: `{{ myObject | json }}`,
+        },
+      ],
+    },
+    {
+      name: 'Compilation',
+      questions: [
+        {
+          question: '1. What is Compilation in Angular?',
+          answer:
+            'Compilation in Angular is the process of converting Angular templates and components into executable JavaScript code. $ Compiler converts source code into machine code that can be executed by the browser.',
+          code: ``,
+        },
+        {
+          question:
+            '2. What are the different types of Compilation in Angular?',
+          answer:
+            'There are two types of compilation in Angular: $ 1. Just-in-Time (JIT) Compilation: JIT compilation converts templates and components into JavaScript code at runtime. $$Example: suppose we have to show a component file property value in the template. but there is error then it will show the error in the console at runtime compilation. $ 2. Ahead-of-Time (AOT) Compilation: AOT compilation converts templates and components into JavaScript code at build time. $$Example: suppose we have to show a component file property value in the template. but there is error then it will show the error in the terminal console at build time compilation. $  ',
+          code: ``,
+        },
+        {
+          question:
+            '3. What is the difference between JIT and AOT compilation?',
+          answer:
+            'The main difference between JIT and AOT compilation is the time at which the code is converted. $ JIT compilation converts code at runtime, while AOT compilation converts code at build time. $ JIT compilation is faster than AOT compilation, but AOT compilation provides better performance and better debugging tools. $  ',
+          code: ` ng build --prod --aot`,
+        },
+        {
+          question: '4. What are the benefits of AOT compilation?',
+          answer:
+            'The benefits of AOT compilation include: $ 1. Faster loading times: AOT compilation reduces the size of the application bundle, resulting in faster loading times. $ 2. Better performance: AOT compilation improves performance by reducing the amount of code that needs to be executed at runtime. $ 3. Better debugging tools: AOT compilation provides better debugging tools, making it easier to identify and fix issues in the code. $ 4. Improved security: AOT compilation reduces the risk of injection attacks by pre-compiling templates and components. $ 5. Better error messages: AOT compilation provides better error messages, making it easier to identify and fix issues in the code. $  ',
+          code: ``,
+        },
+      ],
+    },
+    {
+      name: 'Debugging',
+      questions: [
+        {
+          question: '1. What is Debugging in Angular?',
+          answer:
+            'Debugging in Angular is the process of identifying and fixing errors in an Angular application. $ Debugging is an essential part of the development process, as it helps developers to identify and fix issues in the code. $ Debugging can be done using the Angular Developer Tools, which provides a range of features for debugging Angular applications. $  ',
+          code: ``,
+        },
+        {
+          question:
+            '2. What are the different methods of Debugging in Angular?',
+          answer:
+            'we can debug Angular applications using the following methods: $ 1. Console.log: The simplest method of debugging is to use console.log statements to log values and messages to the console. $ 2. setting breakpoints: You can set breakpoints in your code to pause execution and inspect variables and values. $ 3. using debugger statements: You can use debugger statements in your code to pause execution and inspect variables and values. $ 4. using Angular Developer Tools: The Angular Developer Tools provide a range of features for debugging Angular applications, including inspecting components, services, and routes. $ 5. network tab analysis: You can use the network tab in the browser developer tools to analyze network requests and responses, including API calls and resource loading. $ 6. inspecting elements: You can use the elements tab in the browser developer tools to inspect and modify the DOM elements of your application. $ 7. inspect source: You can use the sources tab in the browser developer tools to inspect and modify the source code of your application. $ 8. error messages: You can use error messages in the console to identify and fix issues in your code. $  ',
+          code: ` console.log('Debugging message');
+              debugger;`,
+        },
+      ],
+    },
+    {
+      name: 'Data Binding',
+      questions: [
+        {
+          question: '1. What is Data Binding in Angular?',
+          answer:
+            'Data binding in Angular is the process of synchronizing data between the model and the view. $ Data binding allows you to display data in the view and update the model when the user interacts with the view. $ There are four types of data binding in Angular: $ 1. Interpolation: Interpolation is used to bind data from the component to the template using double curly braces {{}}. $ 2. Property binding: Property binding is used to bind data from the component to the properties of HTML elements using square brackets []. $ 3. Event binding: Event binding is used to bind events from the template to methods in the component using parentheses (). $ 4. Two-way data binding: Two-way data binding is used to bind data between the component and the template using [(ngModel)]. $  ',
+          code: `{{ propertyValue }}
+              `,
+        },
+        {
+          question: '2. What is Interpolation in Angular?',
+          answer:
+            'Interpolation is a one-way data binding technique used to bind data from the component to the template using double curly braces {{}}. $ Interpolation allows you to display data in the view without modifying the model. $  ',
+          code: `{{ propertyValue }}`,
+        },
+        {
+          question: '3. What is Property Binding in Angular?',
+          answer:
+            'Property binding is a one-way data binding technique used to bind data from the component to the properties of HTML elements using square brackets []. $ Property binding allows you to set the value of an HTML element property based on the value of a component property. $  ',
+          code: `<input [value]="propertyValue" />`,
+        },
+        {
+          question: '4. What is Event Binding in Angular?',
+          answer:
+            'Event binding is a one-way data binding technique used to bind events from the template to methods in the component using parentheses (). $ Event binding allows you to respond to user interactions and update the model based on user actions. $  ',
+          code: `<button (click)="handleClick()">Click me</button>`,
+        },
+        {
+          question: '5. What is Two-Way Data Binding in Angular?',
+          answer:
+            'Two-way data binding is a two-way data binding technique used to bind data between the component and the template using [(ngModel)]. $ Two-way data binding allows you to synchronize data between the model and the view, updating both when changes occur. $  ',
+          code: `<input [(ngModel)]="propertyValue" />`,
+        },
+        {
+          question:
+            '6. What is the difference between One-Way and Two-Way Data Binding?',
+          answer:
+            'One-way data binding is a one-way data binding technique used to bind data from the component to the template or vice versa. $ Two-way data binding is a two-way data binding technique used to bind data between the component and the template, updating both when changes occur. $  ',
+          code: ``,
+        },
+        {
+          question:
+            '7. What is the difference between Property Binding and Attribute Binding?',
+          answer:
+            'Property binding is used to bind data from the component to the properties of HTML elements using square brackets []. $ Attribute binding is used to bind data from the component to the attributes of HTML elements using [attr.attributeName]. $  ',
+          code: `<input [attr.aria-label]="propertyValue" />`,
+        },
+      ],
+    },
+    {
+      name: 'Data Communication',
+      questions: [
+        {
+          question: '1. What is Data Communication in Angular?',
+          answer:
+            'Data communication in Angular is the process of exchanging data between components, services, and other parts of an Angular application. $ Data communication allows you to share data and state between different parts of the application. $ There are several methods for data communication in Angular, including: $ 1. Input and Output properties: Input and Output properties are used to pass data between parent and child components. $ 2. Services: Services are used to share data and state between different components and services. $ 3. Event Emitters: Event Emitters are used to emit events from child components to parent components. $ 4. Observables: Observables are used to handle asynchronous data streams and communicate between components and services. $  ',
+          code: ``,
+        },
+        {
+          question: '2. What is Input Property in Angular?',
+          answer:
+            'Input properties are used to pass data from a parent component to a child component using the @Input decorator. $ Input properties allow you to bind data from the parent component to the child component, enabling data communication between components. $$Example: suppose we have a parent component that wants to pass a value to a child component. $  ',
+          code: `@Input() propertyName: string;`,
+        },
+        {
+          question: '3. What is Output Property in Angular?',
+          answer:
+            'Output properties are used to emit events from a child component to a parent component using the @Output decorator and EventEmitter class. $ Output properties allow you to communicate from the child component to the parent component, enabling data communication between components. $$Example: suppose we have a child component that wants to emit an event to the parent component. $  ',
+          code: `@Output() eventName = new EventEmitter<string>();`,
+        },
+        {
+          question: '4. What is Service in Angular?',
+          answer:
+            'Services are singleton objects that provide functionality and data sharing across different parts of an Angular application. $ Services are typically used for business logic, data access, and shared state management. $ Services can be injected into components, directives, and other services using dependency injection. data communication using services allows you to share data and state between different components and services. $$Example: suppose we have a service that provides data to multiple components. $',
+          code: ``,
+        },
+
+        {
+          question: '6. What is Observable in Angular?',
+          answer:
+            'Observables are used to handle asynchronous data streams and communicate between components and services. $ Observables provide a way to subscribe to data changes and react to them in real-time. $ Observables can be created using the RxJS library and can be used for data communication between components and services. $$Example: suppose we have a service that provides an observable data stream. $  ',
+          code: `import { Injectable } from '@angular/core';
+          import { BehaviorSubject } from 'rxjs';
+          @Injectable({
+            providedIn: 'root'
+          })
+          export class DataService {
+            private dataSubject = new BehaviorSubject<string>('Initial value');
+            data$ = this.dataSubject.asObservable();
+            setData(value: string) {
+              this.dataSubject.next(value);
+            }
+          }`,
+        },
+      ],
+    },
+    {
+      name: 'Directives',
+      questions: [
+        {
+          question: '1. What is a Directive in Angular?',
+          answer:
+            'A directive is a class in Angular that allows you to extend the behavior of HTML elements and components. $ Directives can be used to manipulate the DOM, add behavior to elements, and create reusable components. $ There are three types of directives in Angular: $ 1. Components: Components are directives with a template. $ 2. Structural Directives: Structural directives are used to change the structure of the DOM by adding or removing elements. $ 3. Attribute Directives: Attribute directives are used to change the appearance or behavior of an element. $  ',
+          code: ``,
+        },
+        {
+          question: '2. What is a Component in Angular?',
+          answer:
+            'A component is a directive that is used to create reusable UI elements. $ Components are used to define the structure, behavior, and styling of an element in the DOM. $ Components can be used to create complex UI elements that can be reused throughout an Angular application. $ Components can be created using the @Component decorator. $  ',
+          code: ``,
+        },
+        {
+          question: '3. What is a Structural Directive in Angular?',
+          answer:
+            'Structural directives are used to change the structure of the DOM by adding or removing elements. $ Structural directives are prefixed with an asterisk (*) in the template. $ Common structural directives include ngIf, ngFor, and ngSwitch. $$Example: suppose we want to conditionally display an element based on a condition. We can use the ngIf structural directive to achieve this. $  ',
+          code: ` *ngIf="condition"
+            *ngFor="let item of items" $  *ngSwitch="value"`,
+        },
+
+        {
+          question: '4. What is an Attribute Directive in Angular?',
+          answer:
+            'Attribute directives are used to change the appearance or behavior of an element. $ Attribute directives can be used to add styles, classes, or behaviors to elements. $ Attribute directives are created using the @Directive decorator. $$Example: suppose we want to create a custom attribute directive that changes the background color of an element. $  ',
+          code: ` import { Directive, ElementRef, Renderer2 } from '@angular/core';
+              import { Directive, HostListener } from '@angular/core';
+              @Directive({
+                selector: '[appCustomDirective]'
+              })
+              export class CustomDirective {
+                constructor(private el: ElementRef, private renderer: Renderer2) {}
+                @HostListener('click') onClick() {
+                  this.renderer.setStyle(this.el.nativeElement, 'background-color', 'red');
+                }
+              }`,
+        },
+        {
+          question:
+            '5. What is the difference between Components and Directives?',
+          answer:
+            'Components are directives with a template, while directives are used to extend the behavior of HTML elements and components. $ Components are used to create reusable UI elements, while directives are used to manipulate the DOM and add behavior to elements. $  ',
+          code: ``,
+        },
+        {
+          question: '6. What is custom Directive in Angular?',
+          answer:
+            'Custom directives are user-defined directives that can be used to extend the behavior of HTML elements and components. $ Custom directives can be created using the @Directive decorator and can be used to create reusable components and manipulate the DOM. $$Example: suppose we want to create a custom directive that changes the background color of an element when it is clicked. $  ',
+          code: ` import { Directive, ElementRef, Renderer2 } from '@angular/core';
+              import { Directive, HostListener } from '@angular/core';
+              @Directive({
+                selector: '[appCustomDirective]'
+              })
+              export class CustomDirective {
+                constructor(private el: ElementRef, private renderer: Renderer2) {}
+                @HostListener('click') onClick() {
+                  this.renderer.setStyle(this.el.nativeElement, 'background-color', 'red');
+                }
+              }`,
+        },
+        {
+          question: '7. what is the purpose of ng-container?',
+          answer:
+            'ng-container is a structural directive that is used to group elements without adding extra DOM elements. $ ng-container is useful for grouping elements and applying structural directives without affecting the layout of the DOM. $  ',
+          code: `<ng-container *ngIf="condition">
+                <div>Content 1</div>
+                <div>Content 2</div>
+              </ng-container>
+              `,
+        },
+        {
+          question: '8. What is the purpose of ng-template?',
+          answer:
+            'ng-template is a structural directive that is used to define a template that can be reused in the application. $ ng-template is useful for creating reusable templates and applying structural directives without affecting the layout of the DOM. $  ',
+          code: `<ng-template #templateRef>
+                <div>Content 1</div>
+                <div>Content 2</div>
+              </ng-template>`,
+        },
+        {
+          question: '9. What is the purpose of ng-content?',
+          answer:
+            'ng-content is a structural directive that is used to project content into a component. $ ng-content is useful for creating reusable components that can accept content from the parent component. $  ',
+          code: `<ng-content></ng-content>`,
+        },
+        {
+          question: '10. What is the purpose of ng-template-outlet?',
+          answer:
+            'ng-template-outlet is a structural directive that is used to render a template in a specific location in the DOM. $ ng-template-outlet is useful for rendering templates dynamically based on conditions or events. $  ',
+          code: `<ng-container *ngTemplateOutlet="templateRef"></ng-container>`,
+        },
+        {
+          question: '11. What is the purpose of ngSwitch?',
+          answer:
+            'ngSwitch is a structural directive that is used to conditionally display elements based on a value. $ ngSwitch is useful for creating conditional templates and applying structural directives without affecting the layout of the DOM. $  ',
+          code: `<div [ngSwitch]="value">
+                <div *ngSwitchCase="1">Case 1</div>
+                <div *ngSwitchCase="2">Case 2</div>
+                <div *ngSwitchDefault>Default Case</div>
+              </div>`,
+        },
+      ],
+    },
+    {
+      name: 'HostListener & HostBinding',
+      questions: [
+        {
+          question: '1. What is HostListener in Angular?',
+          answer:
+            'HostListener is a decorator in Angular that allows you to listen to events on the host element of a directive or component. $ HostListener allows you to respond to events and perform actions based on user interactions. $  ',
+          code: ``,
+        },
+        {
+          question: '2. How to use HostListener in Angular?',
+          answer:
+            'To use HostListener in Angular, you need to import the HostListener decorator from @angular/core and decorate a method with the @HostListener decorator. $ The method will be called when the specified event occurs on the host element. $$Example: suppose we want to listen for click events on the host element of a directive. $  ',
+          code: `import { Directive, HostListener } from '@angular/core';
+              @Directive({
+                selector: '[appCustomDirective]'
+              })
+              export class CustomDirective {
+                @HostListener('click', ['$event']) onClick(event: MouseEvent) {
+                  console.log('Element clicked:', event);
+                }
+              }`,
+        },
+        {
+          question: '3. What is HostBinding in Angular?',
+          answer:
+            'HostBinding is a decorator in Angular that allows you to bind properties of the host element of a directive or component. $ HostBinding allows you to set properties and attributes on the host element based on the state of the directive or component. $  ',
+          code: ``,
+        },
+        {
+          question: '4. How to use HostBinding in Angular?',
+          answer:
+            'To use HostBinding in Angular, you need to import the HostBinding decorator from @angular/core and decorate a property with the @HostBinding decorator. $ The property will be bound to the specified property or attribute of the host element. $$Example: suppose we want to bind a class to the host element of a directive. $  ',
+          code: `import { Directive, HostBinding } from '@angular/core';
+              @Directive({
+                selector: '[appCustomDirective]'
+              })
+              export class CustomDirective {
+                @HostBinding('class.active') isActive = true;
+              }`,
+        },
+        {
+          question:
+            '5. What is the difference between HostListener and HostBinding?',
+          answer:
+            'HostListener is used to listen to events on the host element, while HostBinding is used to bind properties and attributes to the host element. $ HostListener allows you to respond to events, while HostBinding allows you to set properties and attributes based on the state of the directive or component. $  ',
+          code: ``,
+        },
+        {
+          question: '6. What is Renderer2 in Angular?',
+          answer:
+            'Renderer2 is a service in Angular that provides an abstraction for manipulating the DOM. $ Renderer2 allows you to perform DOM manipulations in a platform-agnostic way, making it easier to write cross-platform applications. $ Renderer2 provides methods for creating, updating, and removing elements, attributes, and styles. $  ',
+          code: ``,
+        },
+        {
+          question: '7. How to use Renderer2 in Angular?',
+          answer:
+            'To use Renderer2 in Angular, you need to import the Renderer2 service from @angular/core and inject it into your component. $ You can then use the Renderer2 methods to perform DOM manipulations. $  ',
+          code: `import { Component, Renderer2 } from '@angular/core';
+              @Component({
+                selector: 'app-my-component',
+                template: '<div #myElement></div>'
+              })
+              export class MyComponent {
+                constructor(private renderer: Renderer2) {}
+                ngAfterViewInit() {
+                  const element = this.renderer.selectRootElement('#myElement');
+                  this.renderer.setStyle(element, 'background-color', 'red');
+                }
+     }`,
+        },
+      ],
+    },
+    {
+      name: 'RXJS',
+      questions: [
+        {
+          question: '1. What is RXJS in Angular?',
+          answer:
+            'RXJS (Reactive Extensions for JavaScript) is a library for reactive programming using observables. $ RXJS provides a way to work with asynchronous data streams and handle events in a declarative manner. $ RXJS is commonly used in Angular applications for handling asynchronous operations, such as HTTP requests and user interactions,data manupulation, and data transformation. $  ',
+          code: ``,
+        },
+        {
+          question: '2. What are Observables in RXJS?',
+          answer:
+            'Observables are the core building blocks of RXJS. $ Observables represent a stream of data that can be observed and reacted to over time. $ Observables can emit multiple values over time and can be used to handle asynchronous operations, such as HTTP requests and user interactions. $ Observables can be created using the Observable constructor or by using operators provided by RXJS. $  ',
+          code: `import { Observable } from 'rxjs';
+              const observable = new Observable((observer) => {
+                observer.next('Hello');
+                observer.next('World');
+                observer.complete();
+              });`,
+        },
+        {
+          question: '3. What are Operators in RXJS?',
+          answer:
+            'Operators are functions that allow you to manipulate and transform observables. $ Operators can be used to filter, map, merge, and combine observables. $ RXJS provides a wide range of operators for working with observables, including map, filter, mergeMap, switchMap, and more. $  ',
+          code: ` import { map } from 'rxjs/operators';
+              const observable = new Observable((observer) => {
+                observer.next('Hello');
+                observer.next('World');
+                observer.complete();
+              });
+              const mappedObservable = observable.pipe(map((value) => value.toUpperCase()));  `,
+        },
+        {
+          question: '4. What is the difference between creation and transformation operators?',
+          answer:
+            'Creation operators are used to create new observables, while transformation operators are used to manipulate and transform existing observables. $ Creation operators include of, from, and interval, while transformation operators include map, filter, and mergeMap,switchMap,concatMap. $  ',
+          code: `import { of, from, interval } from 'rxjs';
+              const observable1 = of(1, 2, 3); // Creation operator
+              const observable2 = from([1, 2, 3]); // Creation operator
+              const observable3 = interval(1000); // Creation operator`,
+        },
+        {
+          question: '5. What is the difference between cold and hot observables?',
+          answer:
+            'Cold observables are observables that do not start emitting values until there is a subscriber. $ Cold observables are created using the Observable constructor and are typically used for asynchronous operations, such as HTTP requests. $ Hot observables are observables that start emitting values regardless of whether there are subscribers. $ Hot observables are typically used for events and user interactions. $  ',
+          code: `import { Observable } from 'rxjs';
+              const coldObservable = new Observable((observer) => {
+                observer.next('Hello');
+                observer.next('World');
+                observer.complete();
+              });
+              const hotObservable = new Observable((observer) => {
+                setInterval(() => {
+                  observer.next('Hello');
+                }, 1000);
+              });`,
+        },
+        {
+          question: '6. What is the purpose of Subject in RXJS?',
+          answer:
+            'Subject is a special type of observable that allows you to multicast values to multiple subscribers. $ Subject can be used to share data between different parts of an application and can be used to implement event-driven architectures. $ Subject can be created using the Subject constructor and can be used to emit values to subscribers. subject does not store values internally, but it can be used to emit values to subscribers. $  ',
+          code: `import { Subject } from 'rxjs';
+              const subject = new Subject<string>();
+              subject.subscribe((value) => console.log(value));
+              subject.next('Hello');`,
+        },
+        {
+          question: '7. What is BehaviorSubject in RXJS?',
+          answer:
+            'BehaviorSubject is a special type of subject that stores the latest value emitted and emits it to new subscribers. $ BehaviorSubject can be used to share data between different parts of an application and can be used to implement event-driven architectures. $ BehaviorSubject can be created using the BehaviorSubject constructor and can be used to emit values to subscribers. $  ',
+          code: `import { BehaviorSubject } from 'rxjs';
+              const behaviorSubject = new BehaviorSubject<string>('Initial value');
+              behaviorSubject.subscribe((value) => console.log(value));
+              behaviorSubject.next('Hello');`,
+        },
+        {
+          question: '8. What is ReplaySubject in RXJS?',
+          answer:
+            'ReplaySubject is a special type of subject that stores a specified number of emitted values and emits them to new subscribers. $ ReplaySubject can be used to share data between different parts of an application and can be used to implement event-driven architectures. $ ReplaySubject can be created using the ReplaySubject constructor and can be used to emit values to subscribers. $  ',
+          code: `import { ReplaySubject } from 'rxjs';
+              const replaySubject = new ReplaySubject<string>(2);
+              replaySubject.subscribe((value) => console.log(value));
+              replaySubject.next('Hello');
+              replaySubject.next('World');`,
+        },
+        {
+          question: '9. What is Async Subject in RXJS?',
+          answer:
+            'Async Subject is a special type of subject that only emits the last value when the observable completes. $ Async Subject can be used to share data between different parts of an application and can be used to implement event-driven architectures. $ Async Subject can be created using the AsyncSubject constructor and can be used to emit values to subscribers. $  ',
+          code: `import { AsyncSubject } from 'rxjs';
+              const asyncSubject = new AsyncSubject<string>();
+              asyncSubject.subscribe((value) => console.log(value));
+              asyncSubject.next('Hello');
+              asyncSubject.complete();`,
+        },
+        {
+
+        }
+        ],
+    },
+    {
+      name: 'Observables and observers',
+      questions: [
+        {
+          question: '1. What is an Observable in Angular?',
+          answer:
+            'An observable is a data type that represents a stream of values over time. $ Observables are used to handle asynchronous operations and events in Angular applications. $ Observables can emit multiple values over time and can be used to handle events, HTTP requests, and other asynchronous operations. $$Example: suppose we have an observable that emits values over time and we want to subscribe to it then we can use the observable object to handle emitted values. $  ',
+          code: ` import { Observable } from 'rxjs';
+              const observable = new Observable((observer) => {
+                observer.next('Hello');
+                observer.next('World');
+                observer.complete();
+              });
+              observable.subscribe((value) => console.log(value));`,
+        },
+        {
+          question: '2. What is an Observer or Subscriber in Angular?',
+          answer:
+            'An observer is an object that subscribes to an observable and receives notifications when the observable emits values. $ Observers can define methods for handling emitted values, errors, and completion notifications. $ Observers are used to react to changes in observables and perform actions based on emitted values. $$ Example: suppose we have an observable that emits values over time and we want to subscribe to it then we can use the observer object to handle emitted values. $  ',
+          code: `const observer = {
+                next: (value) => console.log(value),
+                error: (error) => console.error(error),
+                complete: () => console.log('Completed')
+              };
+              observable.subscribe(observer);`,
+        },
+        {
+          question: '3. What is the multicast in Angular?',
+          answer:
+            'Multicasting is a technique used to share a single observable among multiple subscribers. $ Multicasting allows you to share the same data stream with multiple subscribers without creating separate instances of the observable. $ Multicasting can be achieved using subjects, which are special types of observables that allow you to multicast values to multiple subscribers. $$Example: suppose we have an observable that emits values over time and we want to share it with multiple subscribers then we can use the subject object to handle emitted values. $  ',
+          code: `import { Subject } from 'rxjs';
+              const subject = new Subject<string>();
+              subject.subscribe((value) => console.log('Subscriber 1:', value));
+              subject.subscribe((value) => console.log('Subscriber 2:', value));
+              subject.next('Hello');
+              subject.next('World');`,
+        },
+        {
+          question: '4. What is the difference between a cold and hot observable?',
+          answer:
+            'Cold observables are observables that do not start emitting values until there is a subscriber. $ Cold observables are created using the Observable constructor and are typically used for asynchronous operations, such as HTTP requests. $ Hot observables are observables that start emitting values regardless of whether there are subscribers. $ Hot observables are typically used for events and user interactions. $  ',
+          code: `import { Observable } from 'rxjs';
+              const coldObservable = new Observable((observer) => {
+                observer.next('Hello');
+                observer.next('World');
+                observer.complete();
+              });
+              const hotObservable = new Observable((observer) => {
+                setInterval(() => {
+                  observer.next('Hello');
+                }, 1000);
+              });`,
+        },
+        {
+          question: '5. What is the difference between a Subject and an Observable?',
+          answer:
+            'An observable is a data type that represents a stream of values over time, while a subject is a special type of observable that allows you to multicast values to multiple subscribers. $ Observables are typically used for asynchronous operations, while subjects are used for sharing data between different parts of an application. $  ',
+          code: `import { Subject } from 'rxjs';
+              const subject = new Subject<string>();
+              subject.subscribe((value) => console.log(value));
+              subject.next('Hello');`,
+        },
+      ]
+    },
+    {
+      name: 'Service',
+      questions: [
+        {
+          question: '1. What is a Service in Angular?',
+          answer:
+            'A service is a singleton object that provides functionality and data sharing across different parts of an Angular application. $ Services are typically used for business logic, data access, and shared state management. $ Services can be injected into components, directives, and other services using dependency injection. $  ',
+          code: `import { Injectable } from '@angular/core';
+              @Injectable({
+                providedIn: 'root'
+              })
+              export class MyService {
+                constructor() {}
+                getData() {
+                  return 'Hello World';
+                }
+              }`,
+        },
+        {
+          question: '2. How to create a Service in Angular?',
+          answer:
+            'To create a service in Angular, you need to use the Angular CLI command ng generate service service-name or ng g s service-name. $ This will create a new service file with the specified name and add it to the providers array of the root module. $  ',
+          code: `ng generate service my-service`,
+        },
+        {
+          question: '3. How to inject a Service in Angular?',
+          answer:
+            'To inject a service in Angular, you need to import the service class and add it to the constructor of the component or directive where you want to use it. $ You can then use the injected service instance to access its methods and properties. $  ',
+          code: `import { Component } from '@angular/core';
+              import { MyService } from './my-service.service';
+              @Component({
+                selector: 'app-my-component',
+                templateUrl: './my-component.component.html'
+              })
+              export class MyComponent {
+                constructor(private myService: MyService) {}
+                ngOnInit() {
+                  console.log(this.myService.getData());
+                }
+              }`,
+        },
+        {
+          qustion: '4. Example of Service in Angular',
+          answer:
+            'Example of Service in Angular: $ HttpclientModule is a built-in service in Angular that allows you to make HTTP requests to a server. $ HttpClientModule provides methods for making GET, POST, PUT, DELETE, and other types of HTTP requests. $ HttpClientModule can be imported into your application module and injected into your components and services. $  ',
+          code: `import { HttpClientModule } from '@angular/common/http';
+              import { HttpClient } from '@angular/common/http';
+              import { Injectable } from '@angular/core';
+              @Injectable({
+                providedIn: 'root'
+              })
+              export class MyService {
+                constructor(private http: HttpClient) {}
+                getData() {
+                  return this.http.get('https://api.example.com/data');
+                }
+              }`, 
+        },
+        {
+          question: '5. What is the purpose of @Injectable decorator in Angular?',
+          answer:
+            '@Injectable is a decorator in Angular that marks a class as a service and allows it to be injected into other classes. $ @Injectable allows you to define dependencies for the service and specify how the service should be instantiated. $  ',
+          code: `import { Injectable } from '@angular/core';
+              @Injectable({
+                providedIn: 'root'
+              })
+              export class MyService {
+                constructor() {}
+              }`,
+        },
+        {
+          question: '6. What is HttpClientModule in Angular?',
+          answer:
+            'most of the frontend applications need to communicate with a backend server to fetch or send data. $ HttpClientModule is a built-in service in Angular that allows you to make HTTP requests to a server. $ HttpClientModule provides methods for making GET, POST, PUT, DELETE, and other types of HTTP requests. $ HttpClientModule can be imported into your application module and injected into your components and services. $  ',
+        },
+      ],
+    },
+       
+
+      
+      
+
+     
+
+
     
+    
+
         
-            
 
+        
+        
 
-
+        
           
-
+    
+    
+   
     // Add more topics here
   ];
   topic: any;
+  showScrollToTop = false;
 
   filteredTopics() {
     return this.topics.filter((t) =>
@@ -741,7 +1427,17 @@ export class LoginStatusComponent {
     navigator.clipboard.writeText(code);
   }
 
-  // runCode(code: string) {
-  //   console.log('Running code:', code);
-  // }
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const scrollPosition =
+      window.pageYOffset ||
+      document.documentElement.scrollTop ||
+      document.body.scrollTop ||
+      0;
+    this.showScrollToTop = scrollPosition > 200; // Show button after scrolling 200px
+  }
+
+  scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
