@@ -1,0 +1,41 @@
+<div class="container">
+    <input type="text" class="form-control my-3" placeholder="Search topics..." [(ngModel)]="searchTerm">
+    <div class="card">
+      <div class="card-body">
+        <ul class="list-group d-flex flex-row gap-3">
+          <li class="list-group-item d-inline-block" *ngFor="let topic of filteredTopics()" (click)="goToTopic(topic)">
+            {{ topic.name }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  
+    <div class="card">
+      <div class="card-body">
+        <div *ngIf="topic">
+          <h2 id="{{ topic.name }}">{{ topic.name }}</h2> <!-- Add dynamic id -->
+  
+          <div *ngFor="let q of topic.questions" class="mb-4">
+            <h5 class="josefin-sans">{{ q.question }}</h5>
+            <p >
+              <span class="eb-garamond" *ngFor="let sentence of q.answer.split('$')">
+                {{ sentence.trim() }}<br>
+              </span>
+            </p>
+  
+            <pre *ngIf="q.code"><code>{{ q.code }}</code></pre>
+            <button *ngIf="q.code" class="btn btn-outline-secondary btn-sm" (click)="copyCode(q.code)">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Scroll to Top Button -->
+    <button
+      class="scroll-to-top"
+      *ngIf="showScrollToTop"
+      (click)="scrollToTop()"
+    >
+      ↑
+    </button>
+  </div>
