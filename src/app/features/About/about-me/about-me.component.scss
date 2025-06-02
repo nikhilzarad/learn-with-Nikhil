@@ -1,0 +1,369 @@
+/* General styles for the hero section */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Ensure the hero container uses flexbox for layout */
+.hero-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    /* Default for smaller screens */
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* Add spacing between elements */
+}
+
+.hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Center items horizontally */
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+.designation {
+    color: rgba(0, 0, 0, 0.87);
+    /* Example color */
+    margin-bottom: 16px;
+    /* Adjust spacing */
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
+    margin-bottom: 24px;
+    /* Adjust spacing */
+}
+
+.social-icons a {
+    text-decoration: none;
+    /* Remove underlines from links */
+    color: rgba(0, 0, 0, 0.54);
+    /* Example icon color */
+    font-size: 1.5rem;
+}
+
+.social-icons .separator {
+    color: rgba(0, 0, 0, 0.54);
+    /* Example separator color */
+}
+
+.social-icons mat-icon {
+    font-size: 24px;
+    /* Adjust icon size */
+    width: 24px;
+    height: 30px;
+}
+
+button[mat-raised-button] mat-icon {
+    margin-left: 8px;
+    /* Space between text and arrow */
+}
+
+.main_title {
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    /* Replace with desired weight */
+    font-style: normal;
+}
+
+.home__shape-circle,
+.home__shape-wawes {
+    position: absolute;
+    opacity: 0.2;
+}
+
+.home__shape-wawes {
+    width: 70px;
+    left: -30px;
+    top: 20px;
+}
+
+.home__shape-circle {
+    width: 160px;
+    right: -20px;
+    bottom: -20px;
+    transform: rotate(15deg);
+    z-index: -1;
+}
+
+.profile-blob {
+    margin-top: 30px;
+    /* Default margin for smaller screens */
+    position: relative;
+    border: 2px solid skyblue;
+    border-radius: 6.25rem;
+    align-self: center;
+    place-items: center;
+}
+
+.profile-blob img {
+    max-width: 100%;
+    height: auto;
+}
+
+.home-prifil {
+    width: 160px;
+    height: 290px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-prifil img {
+    width: 160px;
+    zoom: 100%;
+}
+
+/* Base styles for the download button */
+.download-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #fff;
+    /* White background */
+    color: black;
+    /* Blue text color */
+    text-decoration: none;
+    border: 2px solid black;
+    /* Blue border */
+    border-radius: 50px;
+    /* Rounded border */
+    text-align: center;
+    font-family: "Josefin Sans", sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+}
+
+.download-button:hover {
+    background-color: skyblue;
+    /* Light orange background on hover */
+    color: black;
+    /* White text on hover */
+    transform: scale(1.05);
+}
+
+.download-button mat-icon {
+    vertical-align: middle;
+    font-size: 1.2rem;
+}
+
+/* Responsive styles */
+@media (max-width: 1440px) {
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .profile-info {
+        font-size: 1.2rem;
+    }
+
+    .social-icons a {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .profile-info {
+        font-size: 1rem;
+    }
+
+    .social-icons a {
+        font-size: 1.5rem;
+    }
+
+    .download-button {
+        font-size: 0.9rem;
+        padding: 8px 15px;
+    }
+
+    .download-button mat-icon {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 1.8rem;
+    }
+
+    .profile-info {
+        font-size: 0.9rem;
+    }
+
+    .social-icons a {
+        font-size: 1.2rem;
+    }
+
+    .download-button {
+        font-size: 0.8rem;
+        padding: 7px 12px;
+    }
+
+    .download-button mat-icon {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .profile-info {
+        font-size: 0.8rem;
+    }
+
+    .social-icons a {
+        font-size: 1rem;
+    }
+
+    .download-button {
+        font-size: 0.7rem;
+        padding: 6px 10px;
+    }
+
+    .download-button mat-icon {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .hero-content h1 {
+        font-size: 1.2rem;
+    }
+
+    .profile-info {
+        font-size: 0.7rem;
+    }
+
+    .social-icons a {
+        font-size: 0.8rem;
+    }
+
+    .download-button {
+        font-size: 0.6rem;
+        padding: 5px 8px;
+    }
+
+    .download-button mat-icon {
+        font-size: 0.7rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero-container {
+        flex-direction: row;
+        /* Side-by-side layout for desktop */
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .hero-content {
+        flex: 1;
+        /* Allow content to take up available space */
+        text-align: left;
+        /* Align text to the left */
+    }
+
+    .profile-blob {
+        flex: 1;
+        /* Allow profile blob to take up available space */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+.eb-garamond-custom {
+    font-family: "EB Garamond", serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    /* Replace with desired weight */
+    font-style: normal;
+    font-size: 1.46rem;
+}
+
+.Bruno {
+    font-size: 1.7rem;
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Bruno Ace SC", sans-serif;
+}
+
+mat-chip-list {
+    margin-bottom: 10px; // Adds spacing between chip lists
+}
+
+mat-chip {
+    margin: 5px; // Adds spacing between individual chips
+}
+
+mat-chip {
+    background-color: #0078d7; // Professional blue background for chips
+    color: #fff; // White text for contrast
+    font-size: 0.9rem;
+    font-weight: 500;
+    border-radius: 16px; // Rounded chips
+    padding: 5px 10px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; // Smooth hover effect
+
+    &:hover {
+        transform: scale(1.05); // Slight zoom on hover
+        box-shadow: 0 4px 8px rgba(137, 180, 229, 0.2); // Add shadow on hover
+    }
+}
+
+.chip-image {
+    width: 24px;
+    /* Set the desired width */
+    height: 24px;
+    /* Set the desired height */
+    border-radius: 50%;
+    /* Optional: Make it circular */
+    object-fit: cover;
+    /* Ensure the image fits within the dimensions */
+    margin-right: 8px;
+    /* Add spacing between the image and text */
+    vertical-align: middle;
+    /* Align the image with the text */
+}
+
+mat-card-title {
+    display: flex;
+    justify-content: center;
+    font-size: 1.7rem;
+    text-align: center;
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: "Bruno Ace SC", sans-serif;
+}

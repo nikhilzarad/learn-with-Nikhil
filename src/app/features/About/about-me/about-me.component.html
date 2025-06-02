@@ -1,0 +1,85 @@
+<section class="hero">
+    <div class="hero-container">
+        <div class="hero-content">
+            <h1 class="Bruno ">Hi, I’m Nikhil Zarad</h1>
+
+            <div class="profile-info eb-garamond-custom">
+                <p>Angular Developer | Frontend Developer | 4+ Years of Experience
+                </p>
+                <div class="social-icons">
+
+                    <a href="tel:+918378945050" aria-label="Call" target="_blank" rel="noopener noreferrer">
+                        <mat-icon><i class="fa-solid fa-square-phone"></i></mat-icon>
+                    </a>
+                    <span class="separator">|</span>
+                    <a href="mailto:nikhilzarad@gmail.com" aria-label="Email" target="_blank" rel="noopener noreferrer">
+                        <mat-icon><i class="fa-solid fa-envelope"></i></mat-icon>
+                    </a>
+                    <span class="separator">|</span>
+                    <a href="https://www.linkedin.com/in/nikhil-zarad-408174141/" aria-label="LinkedIn" target="_blank"
+                        rel="noopener noreferrer">
+                        <mat-icon><i class="fab fa-linkedin-in"></i></mat-icon>
+                    </a>
+                    <span class="separator">|</span>
+                    <a href="https://github.com/nikhilzarad/" aria-label="GitHub" target="_blank"
+                        rel="noopener noreferrer">
+                        <mat-icon><i class="fa-brands fa-github"></i></mat-icon>
+                    </a>
+                    <span class="separator">|</span>
+                    <a href="https://wa.me/8378945050" aria-label="WhatsApp" target="_blank" rel="noopener noreferrer">
+                        <mat-icon><i class="fa-brands fa-whatsapp"></i></mat-icon>
+                    </a>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="profile-blob">
+            <div class="home-prifil">
+                <img src="/assets/photoNikhil.jpg" alt>
+            </div>
+            <img src="/assets/shape-wawes.svg" class="home__shape-wawes" alt>
+            <img src="/assets/shape-circle.svg" class="home__shape-circle" alt>
+        </div>
+    </div>
+</section>
+<mat-card>
+    <mat-card-title>Technical Skills</mat-card-title>
+    <mat-card-content>
+        <!-- Frontend Skills -->
+        <h3>Frontend Skills</h3>
+        <mat-chip-list aria-label="Frontend Skills">
+            <mat-chip *ngFor="let skill of frontendSkills" selected>
+                <img mat-card-image [src]="skill.imageUrl" alt="{{ skill.name }}" class="chip-image"> {{ skill.name }} -
+                {{
+                skill.level }}
+            </mat-chip>
+        </mat-chip-list>
+
+        <!-- Tools -->
+        <h3>Tools</h3>
+        <mat-chip-list aria-label="Tools">
+            <mat-chip *ngFor="let tool of tools" selected>
+                <img mat-card-image [src]="tool.imageUrl" alt="{{ tool.name }}" class="chip-image"> {{ tool.name }}
+            </mat-chip>
+        </mat-chip-list>
+
+        <!-- Methodologies -->
+        <h3>Methodologies</h3>
+        <mat-chip-list aria-label="Methodologies">
+            <mat-chip *ngFor="let method of methodologies" selected>
+                <img mat-card-image [src]="method.imageUrl" alt="{{ method.name }}" class="chip-image"> {{ method.name
+                }}
+            </mat-chip>
+        </mat-chip-list>
+
+        <!-- Soft Skills -->
+        <h3>Soft Skills</h3>
+        <mat-chip-list aria-label="Soft Skills">
+            <mat-chip *ngFor="let softSkill of softSkills" selected>
+                <img mat-card-image [src]="softSkill.imageUrl" alt="{{ softSkill.name }}" class="chip-image"> {{
+                softSkill.name }}
+            </mat-chip>
+        </mat-chip-list>
+    </mat-card-content>
+</mat-card>

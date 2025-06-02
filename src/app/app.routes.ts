@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'javascript', pathMatch: 'full' },
+  { path: '', redirectTo: 'angular', pathMatch: 'full' },
   {
     path: 'angular',
     loadChildren: () =>
@@ -13,5 +13,15 @@ export const routes: Routes = [
       import('./features/JavaScript/javascript.module').then(
         (m) => m.JavaScriptModule
       ),
+  },
+  {
+    path: 'about',
+    loadChildren: () =>
+      import('./features/About/about.module').then((m) => m.AboutModule),
+  },
+  {
+    path: 'blogs',
+    loadChildren: () =>
+      import('./features/Blogs/articles.module').then((m) => m.ArticlesModule),
   },
 ];

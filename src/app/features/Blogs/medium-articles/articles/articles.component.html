@@ -1,0 +1,12 @@
+<h3 class="eb-garamond-custom ">lets see the blogs</h3>
+<div class="card-container">
+    <div class="card" *ngFor="let blog of blogList">
+        <div class="card-body">
+            <h5 class="card-title">{{ blog.title }}</h5>
+            <img [src]="blog.imageURL" alt="{{ blog.title }}" class="card-img">
+        </div>
+        <div class="card-footer">
+            <a href="{{ blog.articleLink }}" target="_blank" mat-button>Read More</a>
+        </div>
+    </div>
+</div>
