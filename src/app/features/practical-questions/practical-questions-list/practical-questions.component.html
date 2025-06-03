@@ -1,0 +1,29 @@
+<div class="container">
+  <input type="text" class="form-control my-3" placeholder="Search questions..." [(ngModel)]="searchTerm" />
+
+  <div class="card" *ngFor="let q of filteredQuestions(); let i = index">
+    <div class="card-body">
+      <h5 (click)="toggleAnswer(i)" class="question-title">
+        {{ q.question }}
+        <span class="dropdown-arrow">{{ expandedIndexes.has(i) ? '▲' : '▼' }}</span>
+      </h5>
+
+      <div *ngIf="expandedIndexes.has(i)">
+        <p *ngFor="let line of q.answer.split('\\n')" class="eb-garamond">
+          {{ line }}
+        </p>
+
+        <pre *ngIf="q.code"><code>{{ q.code }}</code></pre>
+        <button *ngIf="q.code" class="btn btn-outline-secondary btn-sm" (click)="copyCode(q.code)">Copy Code</button>
+      </div>
+    </div>
+  </div>
+
+  <button
+    class="scroll-to-top"
+    *ngIf="showScrollToTop"
+    (click)="scrollToTop()"
+  >
+    ↑
+  </button>
+</div>
