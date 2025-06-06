@@ -24,4 +24,9 @@ export const routes: Routes = [
     loadChildren: () =>
       import('./features/Blogs/articles.module').then((m) => m.ArticlesModule),
   },
+  {
+    path: 'practical-questions',
+    loadChildren: () =>
+      import('./features/practical-questions/practical-questions.module').then((m) => m.PracticalQuestionsModule),
+  },
 ];
