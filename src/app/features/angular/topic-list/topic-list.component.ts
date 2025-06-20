@@ -1173,7 +1173,7 @@ export class FormatNumberPipe implements PipeTransform {
         {
           question: '3. What are Operators in RXJS?',
           answer:
-            'Operators are functions that allow you to manipulate and transform observables. $ Operators can be used to filter, map, merge, and combine observables. $ RXJS provides a wide range of operators for working with observables, including map, filter, mergeMap, switchMap, and more. $  ',
+            'Operators are functions that allow you to manipulate and transform observables. $ Operators can be used to filter, map, merge, and combine observables. $ RXJS provides a wide range of operators for working with observables, including map, filter, mergeMap, switchMap, concatmap. $  ',
           code: ` import { map } from 'rxjs/operators';
               const observable = new Observable((observer) => {
                 observer.next('Hello');
@@ -1247,7 +1247,44 @@ export class FormatNumberPipe implements PipeTransform {
               asyncSubject.next('Hello');
               asyncSubject.complete();`,
         },
-        {},
+        {
+           question: '10. wha is switchMap in RXJS?',
+           answer: 'switchMap is a higher-order mapping operator that cancels the observable when a new one is emitted. $ It is used to switch between different observables based on the values emitted by the source observable.$Cancels the previous request if a new one comes in. Starts a new HTTP request only for the latest value. $ It is commonly used with observables that emit values at different times, such as user input or network requests. $$ Example:We have a search box (FormControl), and we want to call the API every time the user types, but only for the latest typed value.',
+           code: `import { switchMap } from 'rxjs/operators';
+           const searchCtrl = new FormControl('');
+           searchCtrl.valueChanges.pipe(
+           switchMap((searchTerm) =>
+           this.http.get(https://api.example.com/search?q=)
+           ),
+           ).subscribe((response) =>
+            console.log(response));`,
+            },
+            {
+              question: '11. What is mergeMap in RXJS?',
+              answer: 'mergeMap is a higher-order mapping operator that merges the observables into a single observable . $ It is used to merge the observables into a single observable, allowing you to process the values from multiple observables concurrently. $ For each user, calls the API to get orders. Does NOT wait previous one to complete. Runs all in parallel . $$ Example: You have a list of users want to get each users orders in parallel.',
+              code: `import { mergeMap } from 'rxjs/operators';
+              this.http.get(https://api.example.com/users)
+              .pipe(
+              mergeMap((users) =>
+              users.map((user) =>
+              this.http.get(https://api.example.com/orders/id),
+              ),
+              ).subscribe((orders) =>
+              console.log(orders));`,
+              },
+              {
+                question: '12. What is concatMap in RXJS?',
+                answer: 'concatMap is a higher-order mapping operator that concatenates the observables into a single observable. $ It is used to concatenate the observables into a single observable, allowing you to process the values from multiple observables sequentially. $ For each user, calls the API to get orders . Waits previous one to complete. Runs one after another . Sends a POST request for each form step, but waits for the previous one to complete. $$ Example: You want to submit a series of form steps, one after another, in order. You want to wait for the previous step to complete before moving on to the next one.',
+                code: `import { concatMap } from 'rxjs/operators';
+                this.http.get(https://api.example.com/users)
+                .pipe(
+                concatMap((users) =>
+                users.map((user) =>
+                this.http.get(https://api.example.com/orders/id),
+                ),
+                ).subscribe((orders) =>
+                console.log(orders));`,
+                },
       ],
     },
     //Observables and observers
